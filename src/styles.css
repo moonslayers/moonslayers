@@ -1,0 +1,34 @@
+body {
+    font-family: "Sedan", serif;
+    color:white;
+    background-image: url('assets/bg2.jpg');
+    background-size: cover; /* Cubre todo el elemento body */
+    background-position: center; /* Centra la imagen */
+    background-repeat:repeat; 
+ }
+
+ .scale-05 {
+    transition: transform 0.2s ease-in-out;
+}
+
+.scale-05:hover {
+    transform: scale(1.05);
+}
+
+.scale-025 {
+    transition: transform 0.2s ease-in-out;
+}
+
+.scale-025:hover {
+    transform: scale(1.025);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.bounce-hover:hover {
+    /* Aplica la animación en hover */
+    animation: bounce;
+    animation-duration: 2s; 
+}
