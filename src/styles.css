@@ -2,9 +2,10 @@ body {
     font-family: "Sedan", serif;
     color:white;
     background-image: url('assets/bg2.jpg');
-    background-size: cover; /* Cubre todo el elemento body */
+    background-size:auto; /* Cubre todo el elemento body */
     background-position: center; /* Centra la imagen */
     background-repeat:repeat; 
+    scroll-behavior: smooth;
  }
 
  .scale-05 {
@@ -32,3 +33,41 @@ body {
     animation: bounce;
     animation-duration: 2s; 
 }
+
+.animate-delay-1s{
+    animation-delay: 0.125s;
+  }
+  .animate-delay-2s{
+    animation-delay: 0.25s;
+  }
+  .animate-delay-3s{
+    animation-delay: 0.375s;
+  }
+  .animate-delay-4s{
+    animation-delay: 0.5s;
+  }
+  .animate-delay-5s{
+    animation-delay: 0.625s;
+  }
+  .animate-delay-6s{
+    animation-delay: 0.75s;
+  }
+  .animate-delay-7s{
+    animation-delay: 0.875s;
+  }
+  .animate-delay-8s{
+    animation-delay: 1.0s;
+  }
+  .animate-delay-9s{
+    animation-delay: 1.125s;
+  }
+  .animate-delay-10s{
+    animation-delay: 1.25s;
+  }
+  .animate-delay-11s{
+    animation-delay: 1.375s;
+  }
+  .animate-delay-12s{
+    animation-delay: 1.5s;
+  }
+  

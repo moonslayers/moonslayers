@@ -1,3 +1,6 @@
 .container-fluid{
     overflow-x: hidden;
 }
+.nav{
+    position: absolute;
+}
