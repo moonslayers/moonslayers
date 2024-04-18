@@ -1,6 +1,11 @@
 .container-fluid{
     overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
 }
-.nav{
+.nav2{
+    width: 100vw;
+    height: auto;
     position: absolute;
+    z-index: 10;
 }

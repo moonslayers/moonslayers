@@ -1,22 +1,23 @@
-<div class="container mt-5">
-    <div class="row main animate__animated animate__delay-1s animate__bounceInRight" >
+<div class="mandatory">
+    <div #div1 class="row main animate__animated" [class.animate__bounceInRight]="elements[0].isVisible">
         <div class="col align-self-center text-center ">
-            <span class="display-5">
-                Hi! My name is Jorge, I'm a web and software developer
+            <span class="display-5 p-2">
+                Hi! My name is Jorge, I'm a web and software developer. I'm very dedicated and hard worker, user experience means everthing,
+                and makes the difference.
             </span>
         </div>
     </div>
-    <div class="row main animate__animated">
+    <div #div2 class="row main animate__animated" [class.animate__bounceInLeft]="elements[1].isVisible">
         <div class="col align-self-center text-center">
-            <span class="display-5" >
+            <span class="display-5 p-2">
                 And this, it's my portfolio...
             </span>
         </div>
     </div>
-    <div class="row main animate__animated">
+    <div #div3 class="row main animate__animated" [class.animate__bounceInRight]="elements[2].isVisible">
         <div class="col align-self-center text-center">
-            <span class="display-5">
-                Some frameworks and tools that I use for projects.
+            <span class="display-5 p-2">
+                These are my kitchen utensils:
             </span>
         </div>
     </div>
