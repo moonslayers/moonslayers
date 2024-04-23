@@ -1,24 +1,56 @@
 <div class="mandatory">
-    <div #div1 class="row main animate__animated" [class.animate__bounceInRight]="elements[0].isVisible">
-        <div class="col align-self-center text-center ">
-            <span class="display-5 p-2">
-                Hi! My name is Jorge, I'm a web and software developer. I'm very dedicated and hard worker, user experience means everthing,
-                and makes the difference.
-            </span>
+    <div #div1 class="container-fluid main ">
+        <div class="row justify-content-center hp100 relative">
+            <div class="col-auto align-self-center text-center animate__animated"
+                [class.animate__bounceInLeft]="elements[0].isVisible">
+                <span class="display-5 p-2">
+                    Hi! My name is
+                </span>
+            </div>
+            <div class="col-auto align-self-center text-center animate__animated animate-delay-3s"
+                [class.animate__flipInX]="elements[0].isVisible">
+                <span class="display-5 p-2">
+                    Jorge,
+                </span>
+            </div>
+            <div class="col-auto align-self-center text-center animate__animated animate-delay-1s"
+                [class.animate__bounceInRight]="elements[0].isVisible">
+                <span class="display-5 p-2">
+                    I'm a web and software developer.
+                </span>
+            </div>
         </div>
     </div>
-    <div #div2 class="row main animate__animated" [class.animate__bounceInLeft]="elements[1].isVisible">
-        <div class="col align-self-center text-center">
-            <span class="display-5 p-2">
-                And this, it's my portfolio...
-            </span>
+    <div #div2 class="container-fluid main ">
+        <div class="row justify-content-center hp100 relative">
+            <div class="col-auto align-self-center text-center animate__animated animate__faster"
+                [class.animate__lightSpeedInRight]="elements[1].isVisible">
+                <span class="display-5 p-2">
+                    I'm a web and software developer.
+                </span>
+            </div>
         </div>
     </div>
-    <div #div3 class="row main animate__animated" [class.animate__bounceInRight]="elements[2].isVisible">
-        <div class="col align-self-center text-center">
-            <span class="display-5 p-2">
-                These are my kitchen utensils:
-            </span>
+    <div #div3 class="container-fluid main">
+        <div class="row align-items-center hp100">
+            <div class="row bg-success justify-content-center">
+                <div class="col-auto bg-white p-2 round-x">
+                    <img class="img" src="https://cdn.freebiesupply.com/logos/large/2x/angular-icon-1-logo-png-transparent.png">
+                </div>
+            </div>
+            <div class="row justify-content-center bg-warning">
+                <div class="col-auto text-center animate__animated"
+                    [class.animate__bounceInLeft]="elements[2].isVisible">
+                    <span class="display-5">
+                        These are my kitchen tools...
+                    </span>
+                </div>
+            </div>
+            <div class="row bg-success justify-content-center">
+                <div class="col-auto bg-white p-2 round-x">
+                    <img class="img" src="https://cdn.freebiesupply.com/logos/large/2x/angular-icon-1-logo-png-transparent.png">
+                </div>
+            </div>
         </div>
     </div>
 </div>

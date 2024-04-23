@@ -51,10 +51,10 @@ export class HomeComponent {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             this.elements[0].isVisible = true
+          } else {
             setTimeout(() => {
               this.elements[0].isVisible = false
-            }, 800)
-          } else {
+            }, 400)
           }
         });
       }, options);
@@ -69,10 +69,10 @@ export class HomeComponent {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             this.elements[1].isVisible = true
+          } else {
             setTimeout(() => {
               this.elements[1].isVisible = false
-            }, 800)
-          } else {
+            }, 400)
           }
         });
       }, options);
@@ -86,10 +86,10 @@ export class HomeComponent {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             this.elements[2].isVisible = true
+          } else {
             setTimeout(() => {
               this.elements[2].isVisible = false
-            }, 800)
-          } else {
+            }, 400)
           }
         });
       }, options);

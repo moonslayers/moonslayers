@@ -9,3 +9,15 @@
     width: 100vw;
     height: 100vh;
 }
+
+.hp100{
+    height: 100%;
+}
+.img{
+    height: 5.0rem;
+    width: 5.0rem;
+}
+
+.round-x{
+    border-radius: 40%;
+}
