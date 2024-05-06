@@ -70,4 +70,16 @@ body {
   .animate-delay-12s{
     animation-delay: 1.5s;
   }
+  .animate-delay-13s{
+    animation-delay: 1.625s;
+  }
+  .animate-delay-14s{
+    animation-delay: 1.75s;
+  }
+  .animate-delay-15s{
+    animation-delay: 1.875s;
+  }
+  .animate-delay-16s{
+    animation-delay: 2.0s;
+  }
   

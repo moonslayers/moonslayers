@@ -1,11 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, ViewChild, ViewChildren } from '@angular/core';
+import { MandatorySnapComponent } from '../shared/mandatory-snap/mandatory-snap.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
+    MandatorySnapComponent,
+    RouterLink,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -14,6 +18,7 @@ export class HomeComponent {
   @ViewChild('div1') miElemento1: ElementRef | undefined;
   @ViewChild('div2') miElemento2: ElementRef | undefined;
   @ViewChild('div3') miElemento3: ElementRef | undefined;
+  @ViewChild('div4') miElemento4: ElementRef | undefined;
   slide_animation: string = 'animate__bounceInUp'
   tab: number = 0
   animation: boolean = false
@@ -27,14 +32,18 @@ export class HomeComponent {
     {
       isVisible: false
     },
+    {
+      isVisible: false
+    },
+    {
+      isVisible: false
+    },
   ]
 
   ngAfterViewInit() {
     // Aquí puedes acceder al elemento después de que se hayan inicializado las vistas
     if (typeof IntersectionObserver !== 'undefined') {
       this.verificarVisibilidad();
-    } else {
-      console.warn('IntersectionObserver no es compatible con este navegador.');
     }
   }
 
@@ -96,6 +105,23 @@ export class HomeComponent {
 
       if (this.miElemento3 && observer) {
         observer.observe(this.miElemento3.nativeElement);
+      }
+    }
+    if (this.elements[3]) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            this.elements[3].isVisible = true
+          } else {
+            setTimeout(() => {
+              this.elements[3].isVisible = false
+            }, 400)
+          }
+        });
+      }, options);
+
+      if (this.miElemento4 && observer) {
+        observer.observe(this.miElemento4.nativeElement);
       }
     }
   }

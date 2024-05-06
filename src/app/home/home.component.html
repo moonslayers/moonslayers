@@ -1,56 +1,147 @@
 <div class="mandatory">
     <div #div1 class="container-fluid main ">
-        <div class="row justify-content-center hp100 relative">
-            <div class="col-auto align-self-center text-center animate__animated"
-                [class.animate__bounceInLeft]="elements[0].isVisible">
-                <span class="display-5 p-2">
-                    Hi! My name is
-                </span>
-            </div>
-            <div class="col-auto align-self-center text-center animate__animated animate-delay-3s"
-                [class.animate__flipInX]="elements[0].isVisible">
-                <span class="display-5 p-2">
-                    Jorge,
-                </span>
-            </div>
-            <div class="col-auto align-self-center text-center animate__animated animate-delay-1s"
-                [class.animate__bounceInRight]="elements[0].isVisible">
-                <span class="display-5 p-2">
-                    I'm a web and software developer.
-                </span>
-            </div>
-        </div>
-    </div>
-    <div #div2 class="container-fluid main ">
-        <div class="row justify-content-center hp100 relative">
-            <div class="col-auto align-self-center text-center animate__animated animate__faster"
-                [class.animate__lightSpeedInRight]="elements[1].isVisible">
-                <span class="display-5 p-2">
-                    I'm a web and software developer.
-                </span>
-            </div>
-        </div>
-    </div>
-    <div #div3 class="container-fluid main">
-        <div class="row align-items-center hp100">
-            <div class="row bg-success justify-content-center">
-                <div class="col-auto bg-white p-2 round-x">
-                    <img class="img" src="https://cdn.freebiesupply.com/logos/large/2x/angular-icon-1-logo-png-transparent.png">
+        <ng-container *ngIf="elements[0].isVisible">
+            <div class="row justify-content-center hp100 relative">
+                <div class="col-auto align-self-center text-center animate__animated animate__bounceInLeft">
+                    <span class="display-5 p-2">
+                        Hi! My name is
+                    </span>
+                </div>
+                <div class="col-auto align-self-center text-center animate__animated animate__flipInX animate-delay-3s">
+                    <span class="display-5 p-2">
+                        Jorge,
+                    </span>
+                </div>
+                <div class="col-auto align-self-center text-center animate__animated animate__bounceInRight animate-delay-1s">
+                    <span class="display-5 p-2">
+                        I'm a web and software developer.
+                    </span>
                 </div>
             </div>
-            <div class="row justify-content-center bg-warning">
-                <div class="col-auto text-center animate__animated"
-                    [class.animate__bounceInLeft]="elements[2].isVisible">
+        </ng-container>
+    </div>
+    <div #div2 class="container-fluid main ">
+        <ng-container *ngIf="elements[1].isVisible">
+            <div class="row justify-content-center hp100 relative">
+                <div class="col-auto align-self-center text-center animate__animated animate__lightSpeedInRight animate__faster">
+                    <span class="display-5 p-2">
+                        And this it's my portfolio.
+                    </span>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div #div3 class="container-fluid main">
+        <div class="vstack hp100" *ngIf="elements[2].isVisible">
+            <div class="row mt-auto justify-content-center">
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__bounceInRight animate-delay-4s">
+                    <img class="img" src="https://cdn.freebiesupply.com/logos/large/2x/angular-icon-1-logo-png-transparent.png">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__bounceInRight animate-delay-6s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.freebiesupply.com%2Flogos%2Flarge%2F2x%2Freact-1-logo-png-transparent.png&f=1&nofb=1&ipt=db5ebdd93410dea3f4a269e88d09b1839c649e65ee3a1e92290be9e07eb887ad&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__bounceInRight animate-delay-8s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogospng.org%2Fdownload%2Flaravel%2Flogo-laravel-icon-1024.png&f=1&nofb=1&ipt=73e260919551ee1390bc11138adbbaa0e63127bb0dc06fd92b7fe6c222ecd7a6&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__bounceInRight animate-delay-10s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fseeklogo.com%2Fimages%2FN%2Fnext-js-logo-8FCFF51DD2-seeklogo.com.png&f=1&nofb=1&ipt=2fc0c6fde3dad679433c246d5d025641edeca77b0b80fd8c4c957e98aa8c08c7&ipo=images
+                    ">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__bounceInRight animate-delay-12s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogospng.org%2Fdownload%2Fvite-js%2Fvite-js-4096-logo.png&f=1&nofb=1&ipt=d06323eb68292cbf6ad14a3930d753a505d18b875ae085b1a2af07ae0bc014c1&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__bounceInRight animate-delay-14s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.pngaaa.com%2F681%2F876681-middle.png&f=1&nofb=1&ipt=783458df2c74c33032ad97dc27a5560262a248a36881a544f34217ff51198747&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__bounceInRight animate-delay-16s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-world.net%2Fwp-content%2Fuploads%2F2020%2F09%2FLinux-Symbol.png&f=1&nofb=1&ipt=6d3611c6652272c610fad212229199b2ab08d5ca64f4d4fb1321954722698e90&ipo=images">
+                </div>
+            </div>
+            <div class="row justify-content-center mt-auto mb-auto">
+                <div class="col-auto text-center animate__animated animate__jackInTheBox">
                     <span class="display-5">
                         These are my kitchen tools...
                     </span>
                 </div>
             </div>
-            <div class="row bg-success justify-content-center">
-                <div class="col-auto bg-white p-2 round-x">
-                    <img class="img" src="https://cdn.freebiesupply.com/logos/large/2x/angular-icon-1-logo-png-transparent.png">
+            <div class="row mb-auto justify-content-center">
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__bounceInLeft animate-delay-16s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffirebase.google.com%2Fimages%2Fbrand-guidelines%2Flogo-vertical.png&f=1&nofb=1&ipt=397c19a02e3dcd64b573502b984f85c7fb6810ce38cc06c9a7d811fd7fd0ebc4&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__bounceInLeft animate-delay-14s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.urLHYMYPFxkcs6AC4Io9vwHaHa%26pid%3DApi&f=1&ipt=0d59d3455591ab6e2018b19debf7788f5c04245189b6d3b6e041ffd5357ea3c4&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__bounceInLeft animate-delay-12s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2016%2F09%2FNode_logo_NodeJS.png&f=1&nofb=1&ipt=dd189af3f3ba0040f344de3e62b3a24d533652cae66d86fd3443a72b09fd58ad&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__bounceInLeft animate-delay-10s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmeterpreter.org%2Fwp-content%2Fuploads%2F2018%2F09%2Fflutter.png&f=1&nofb=1&ipt=9af1eb3c5d5d7f21d3ac576e04761f0c8096d4a2d593e77881ec8186fac3b934&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__bounceInLeft animate-delay-8s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fww1.freelogovectors.net%2Fwp-content%2Fuploads%2F2022%2F10%2Fbootstrap-logo-freelogovectors.net_.png%3Flossy%3D1%26ssl%3D1&f=1&nofb=1&ipt=460ee407de32f38b050b55d865e80db8c098ccaad0612315440d9180b198727b&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__bounceInLeft animate-delay-6s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.7MTPJSqWfwQ7fMIpVgSGrAAAAA%26pid%3DApi&f=1&ipt=30c9733e0f67d328b203f362485088fdcbf7a75fcaf68d1d01663928ed959c2c&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__bounceInLeft animate-delay-4s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdhalgara.com%2Fcontent%2Fimages%2F2018%2F07%2Fdotnet-logo.png&f=1&nofb=1&ipt=81ac6b0a68a2258d60b79fb2e44e414f8b82643f6a1d548be3c7cecb1066d2d8&ipo=images">
                 </div>
             </div>
         </div>
     </div>
+    <div #div4 class="container-fluid main">
+        <div class="vstack hp100" *ngIf="elements[3].isVisible">
+            <div class="row mt-auto justify-content-center">
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__fadeInLeftBig animate__faster animate-delay-4s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fd1yjjnpx0p53s8.cloudfront.net%2Fstyles%2Flogo-thumbnail%2Fs3%2F042014%2Fc_0.png%3Fitok%3DHv2Kaisp&f=1&nofb=1&ipt=24844e2030483496d446d5267cef72b98aac7ca10b3810f27ffd763d1dd85eb0&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__fadeInUpBig animate__faster animate-delay-6s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F476-4768341_javascript-logo-number-angularjs-node-javascript-transparent-background.png&f=1&nofb=1&ipt=75fcc5882c7f15b860161cef8e0b26989ffada2224529483c5f5e4e0316e33fd&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__fadeInLeftBig animate__faster animate-delay-8s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.pngaaa.com%2F728%2F1761728-middle.png&f=1&nofb=1&ipt=da9152852d2cde965250b2aed5380e0c7ca72d8bdfa9d7c53fca9a85adaa7ba6&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__fadeInUpBig animate__faster animate-delay-10s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogodownload.org%2Fwp-content%2Fuploads%2F2016%2F10%2Fhtml5-logo-10.png&f=1&nofb=1&ipt=54052dc9fca37e2f744671ebb02f89ceab3b0c684a5d127d303503b0c413f0b3&ipo=images">
+                    ">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__fadeInLeftBig animate__faster animate-delay-12s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ysEGy3VpeWonRbCX3DudWQHaD7%26pid%3DApi&f=1&ipt=cd85b2a77dd187928493da3854af6a88860307359919ed9c08eff4c6d698e23a&ipo=images">
+                </div>
+            </div>
+            <div class="row justify-content-center mt-auto mb-auto">
+                <div class="col-auto text-center animate__animated animate__zoomIn">
+                    <span class="display-5">
+                        Programming languages I can work with...
+                    </span>
+                </div>
+            </div>
+            <div class="row mb-auto justify-content-center">
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__fadeInDownBig animate__faster animate-delay-12s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngitem.com%2Fpimgs%2Fm%2F521-5219587_c-logo-transparent-background-hd-png-download.png&f=1&nofb=1&ipt=d4b87eec6a3decaddda6972a821346ad3a52d97a1442b982fa958220f7d03766&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__fadeInRightBig animate__faster animate-delay-10s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngitem.com%2Fpimgs%2Fm%2F198-1985012_transparent-css3-logo-png-css-logo-transparent-background.png&f=1&nofb=1&ipt=25fa853fc1d759e92fe1d8cc060a3cb0b4fab018b7c6a513d5783a2656cc9336&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__fadeInRightBig animate__faster animate-delay-8s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2F4%2F4c%2FTypescript_logo_2020.svg%2F1200px-Typescript_logo_2020.svg.png&f=1&nofb=1&ipt=f751f20ee32dfa9f97ec0b4e304d2878f5386825d2f757f58a95dfc0cf1558f5&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__fadeInDownBig animate__faster animate-delay-6s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F198-1984828_java-icon-transparent-hd-png-download.png&f=1&nofb=1&ipt=08f7ca99d36df32fdf657a0822326678e8890c15cae87254b801ea8ff6978c90&ipo=images">
+                </div>
+                <div class="col-auto m-4 bg-white p-3 round-x animate__animated animate__fadeInRightBig animate__faster animate-delay-4s">
+                    <img class="img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbrandslogos.com%2Fwp-content%2Fuploads%2Fimages%2Flarge%2Fpython-logo.png&f=1&nofb=1&ipt=01ad1954195e94d4fd6b61f3aa16305168ada93f852ba520322984e281c222f2&ipo=images">
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-mandatory-snap>
+        <div class="row justify-content-center hp100 relative">
+            <div class="col-auto align-self-center text-center animate__animated animate__lightSpeedInRight animate__faster">
+                <a routerLink="/projects" class="display-5 p-2 link-light">
+                    Lets see something interesting <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </app-mandatory-snap>
 </div>

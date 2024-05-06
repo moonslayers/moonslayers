@@ -12,6 +12,7 @@
 
 .hp100{
     height: 100%;
+    width: 100%;
 }
 .img{
     height: 5.0rem;
@@ -19,5 +20,5 @@
 }
 
 .round-x{
-    border-radius: 40%;
+    border-radius: 50%;
 }
