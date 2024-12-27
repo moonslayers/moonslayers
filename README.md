@@ -32,13 +32,10 @@
 
 - ☁️ I've keen interest in cloud computing. So,I'm learning **AWS**
 
-- 📝 I regularly write articles on [Hashnode](https://1010nishant.hashnode.dev/)
-
 - 💬 Ask me about **Angular, Laravel, Flutter, Mysql**
 
 - 📫 Feel free to reach me out **juniorluna8@hotmail.com**
 
-- 🏠 Don't hesitate to drop me a **👋** on Discord –  [1010nishant](https://discordapp.com/users/957722095381540874) my username!
 <!--Intro end-->
 
 
@@ -52,7 +49,7 @@
   
   <img  align="center"  src="https://github-readme-stats.vercel.app/api?username=moonslayers&theme=dark&show_icons=true&count_private=true" />
   <br></br>
-  <img  title="🔥 Get streak stats for your profile at git.io/streak-stats" alt="Mark streak" src="https://github-readme-streak-stats.herokuapp.com/?user=1010nishant&theme=dark&hide_border=false" /> 
+  <img  title="🔥 Get streak stats for your profile at git.io/streak-stats" alt="Mark streak" src="https://github-readme-streak-stats.herokuapp.com/?user=moonslayers&theme=dark&hide_border=false" /> 
 </td>
 
 <td width="50%" align="center">
