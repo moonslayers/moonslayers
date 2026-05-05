@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+// ==========================================
+// 1. Sobreescribir variables de Bootstrap
+// ==========================================
+
+// --- Modo claro (valores por defecto que quieras cambiar) ---
+$primary: #008080;
+$secondary: #4e5d6c;
+$success: #198754;
+$info: #0dcaf0;
+$warning: #ffc107;
+$danger: #dc3545;
+
+$border-radius: 1.25rem;
+$border-radius-lg: 0.7rem;
+
+// Tipografía corporativa
+$font-family-sans-serif: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-family-monospace: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+$font-family-base: $font-family-sans-serif;
+
+$enable-dark-mode: true;
+
+$link-color: $primary;
+$link-hover-color: darken($primary, 10%);
+
+// ==========================================
+// 2. Importar Bootstrap
+// ==========================================
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// ==========================================
+// 3. Personalizaciones específicas para el tema oscuro
+// ==========================================
+
+[data-bs-theme="dark"] {
+    --bs-primary: #32b8bf;
+    --bs-primary-rgb: 50, 184, 191;
+    --bs-secondary: #8b9da9;
+    --bs-secondary-rgb: 139, 157, 169;
+    --bs-success: #75b798;
+    --bs-success-rgb: 117, 183, 152;
+    --bs-info: #6edff6;
+    --bs-info-rgb: 110, 223, 246;
+    --bs-warning: #ffda6a;
+    --bs-warning-rgb: 255, 218, 106;
+    --bs-danger: #ea868f;
+    --bs-danger-rgb: 234, 134, 143;
+
+    // Cambiar fondos y textos para el dashboard
+    --bs-body-bg: #121b22; // fondo muy oscuro, casi negro azulado
+    --bs-body-color: #e0e6ed;
+    --bs-tertiary-bg: #1e2a35; // fondo de tarjetas, modales
+    --bs-border-color: #3a4755;
+
+    // Ajustar algunas sombras para dar profundidad
+    --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.4);
+}
