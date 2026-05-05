@@ -1,0 +1,64 @@
+<aside class="sidebar d-flex flex-column vh-100 border-end flex-shrink-0 shadow"
+  [class.is-open]="sidebarService.isOpen()">
+  <nav class="d-flex flex-column gap-1 p-3 overflow-auto flex-shrink-1">
+    <!-- MAIN SECTION -->
+    <div class="d-flex flex-column gap-1">
+      <div class="d-flex badge text-bg-primary align-items-center gap-2 px-3 py-3">
+        <i class="bi bi-moon-stars fs-5"></i>
+        <span class="fw-bold">Moonslayers</span>
+        <span class="badge bg-primary bg-opacity-50 border border-light rounded-pill ms-auto small fw-normal">β
+          0.1</span>
+      </div>
+      @for (item of mainMenuItems; track item.label) {
+      <div class="d-flex flex-column">
+        @if (item.children) {
+        <button type="button"
+          class="sidebar-item btn btn-link text-decoration-none text-body d-flex align-items-center gap-2 p-3 rounded"
+          (click)="toggleSubMenu(item)">
+          <i [class]="item.icon" class="text-center flex-shrink-0"></i>
+          <span class="flex-grow-0 text-truncate">{{ item.label }}</span>
+          <i class="bi-chevron-down sidebar-arrow ms-auto small" [class.expanded]="isSubMenuOpen(item)"></i>
+        </button>
+        @if (isSubMenuOpen(item)) {
+        <div class="sidebar-submenu d-flex flex-column gap-1 ps-4 mt-1">
+          @for (child of item.children; track child.label) {
+          <a class="sidebar-subitem d-flex align-items-center gap-2 p-3 rounded text-decoration-none text-secondary small"
+            [routerLink]="child.route" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            <i [class]="child.icon" class="text-center flex-shrink-0"></i>
+            <span>{{ child.label }}</span>
+          </a>
+          }
+        </div>
+        }
+        } @else {
+        <a class="sidebar-item d-flex align-items-center gap-2 p-3 rounded text-decoration-none text-body"
+          [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <i [class]="item.icon" class="text-center flex-shrink-0"></i>
+          <span class="flex-grow-1 text-truncate">{{ item.label }}</span>
+        </a>
+        }
+      </div>
+      }
+    </div>
+
+    <hr class="my-2 text-secondary opacity-50">
+
+    <!-- SECONDARY SECTION -->
+    <div class="d-flex flex-column gap-1">
+      @for (item of secondaryMenuItems; track item.label) {
+      <div class="d-flex flex-column">
+        <a class="sidebar-item d-flex align-items-center gap-2 p-3 rounded text-decoration-none text-body"
+          [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <i [class]="item.icon" class="text-center flex-shrink-0"></i>
+          <span class="flex-grow-1 text-truncate">{{ item.label }}</span>
+        </a>
+      </div>
+      }
+    </div>
+  </nav>
+</aside>
+
+@if (sidebarService.isOpen()) {
+<div class="sidebar-backdrop" (click)="sidebarService.close()" (keydown.enter)="sidebarService.close()"
+  (keydown.space)="sidebarService.close()" tabindex="0" role="button" aria-label="Cerrar menú"></div>
+}

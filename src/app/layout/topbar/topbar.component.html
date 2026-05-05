@@ -1,0 +1,92 @@
+<header class="d-flex align-items-center justify-content-between px-2 px-md-3 border-bottom py-2">
+  <div class="d-flex align-items-center gap-1 gap-md-2">
+    <button class="btn btn-link p-1 p-md-2 text-body" (click)="sidebarService.toggle()" aria-label="Toggle sidebar">
+      <i class="bi-list fs-5"></i>
+    </button>
+
+    <!-- Search: Desktop (always visible) -->
+    <div class="d-none d-md-flex input-group">
+      <span class="input-group-text bg-body-tertiary border-0">
+        <i class="bi-search"></i>
+      </span>
+      <input type="text" class="form-control bg-body-tertiary border-0" [placeholder]="currentPlaceholder()"
+        aria-label="Search">
+    </div>
+  </div>
+
+  <div class="d-flex align-items-center gap-0 gap-md-1">
+
+    <!-- Search: Mobile (icon with dropdown) -->
+    <div class="d-md-none position-relative">
+      <button class="btn btn-link p-1 p-md-2 text-body" (click)="toggleSearch()" aria-label="Search">
+        <i class="bi-search fs-5"></i>
+      </button>
+      @if (searchOpen()) {
+      <div class="dropdown-panel position-absolute end-0 mt-1 bg-body border rounded shadow-sm p-2 search-mobile"
+        style="width: 280px; z-index: 1060;">
+        <div class="input-group input-group-sm">
+          <span class="input-group-text bg-body-tertiary border-0">
+            <i class="bi-search"></i>
+          </span>
+          <input type="text" class="form-control bg-body-tertiary border-0" [placeholder]="currentPlaceholder()"
+            aria-label="Search">
+        </div>
+      </div>
+      }
+    </div>
+
+    <button class="btn btn-link p-1 p-md-2 text-body" (click)="themeService.toggleTheme()" aria-label="Toggle theme">
+      <i [class]="themeService.themeIcon()" class="fs-5"></i>
+    </button>
+
+    <!-- Notifications dropdown -->
+    <div class="position-relative">
+      <button class="btn btn-link p-1 p-md-2 text-body position-relative" (click)="toggleNotifications()"
+        aria-label="Notifications">
+        <i class="bi-bell fs-5"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">3</span>
+      </button>
+      @if (notificationsOpen()) {
+      <div class="dropdown-panel position-absolute end-0 mt-1 bg-body border rounded shadow-sm"
+        style="width: 280px; z-index: 1060;">
+        <div class="p-3 border-bottom">
+          <span class="fw-semibold small">Notificaciones</span>
+        </div>
+        <div class="p-3 text-center text-secondary small">
+          <i class="bi-inbox fs-4 d-block mb-2"></i>
+          <span>No tienes notificaciones nuevas</span>
+        </div>
+      </div>
+      }
+    </div>
+
+    <!-- Language dropdown -->
+    <div class="position-relative">
+      <button class="btn btn-link p-1 p-md-2 text-body" (click)="toggleLanguage()" aria-label="Language">
+        <i class="bi-globe2 fs-5"></i>
+      </button>
+      @if (languageOpen()) {
+      <ul class="dropdown-panel position-absolute end-0 mt-1 bg-body border rounded shadow-sm list-unstyled mb-0 py-1"
+        style="min-width: 80px; z-index: 1060;">
+        <li>
+          <button class="btn btn-link text-decoration-none text-body d-block w-100 text-start px-3 py-1 small"
+            [class.active]="selectedLanguage() === 'ES'" (click)="selectLanguage('ES')">ES</button>
+        </li>
+        <li>
+          <button class="btn btn-link text-decoration-none text-body d-block w-100 text-start px-3 py-1 small"
+            [class.active]="selectedLanguage() === 'EN'" (click)="selectLanguage('EN')">EN</button>
+        </li>
+      </ul>
+      }
+    </div>
+
+    <div class="vr mx-1"></div>
+
+    <div class="d-flex align-items-center gap-2 ms-0 ms-md-1">
+      <div
+        class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold px-2 py-1 small">
+        JR</div>
+      <span class="d-none d-md-inline small fw-medium">Junior</span>
+    </div>
+  </div>
+</header>

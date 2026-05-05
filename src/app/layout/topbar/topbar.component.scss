@@ -1,0 +1,19 @@
+.dropdown-panel {
+  animation: fadeSlideDown 0.15s ease-out;
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-mobile {
+  max-width: 60vw;
+}
