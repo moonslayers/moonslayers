@@ -1,6 +1,6 @@
 <header class="d-flex align-items-center justify-content-between px-2 px-md-3 border-bottom py-2">
   <div class="d-flex align-items-center gap-1 gap-md-2">
-    <button class="btn btn-link p-1 p-md-2 text-body" (click)="sidebarService.toggle()" aria-label="Toggle sidebar">
+      <button class="btn btn-link p-1 p-md-2 text-body" (click)="sidebarService.toggle()" [attr.aria-label]="t()['aria.toggleSidebar']">
       <i class="bi-list fs-5"></i>
     </button>
 
@@ -10,7 +10,7 @@
         <i class="bi-search"></i>
       </span>
       <input type="text" class="form-control bg-body-tertiary border-0" [placeholder]="currentPlaceholder()"
-        aria-label="Search">
+        [attr.aria-label]="t()['aria.search']">
     </div>
   </div>
 
@@ -18,7 +18,7 @@
 
     <!-- Search: Mobile (icon with dropdown) -->
     <div class="d-md-none position-relative">
-      <button class="btn btn-link p-1 p-md-2 text-body" (click)="toggleSearch()" aria-label="Search">
+      <button class="btn btn-link p-1 p-md-2 text-body" (click)="toggleSearch()" [attr.aria-label]="t()['aria.search']">
         <i class="bi-search fs-5"></i>
       </button>
       @if (searchOpen()) {
@@ -29,20 +29,20 @@
             <i class="bi-search"></i>
           </span>
           <input type="text" class="form-control bg-body-tertiary border-0" [placeholder]="currentPlaceholder()"
-            aria-label="Search">
+            [attr.aria-label]="t()['aria.search']">
         </div>
       </div>
       }
     </div>
 
-    <button class="btn btn-link p-1 p-md-2 text-body" (click)="themeService.toggleTheme()" aria-label="Toggle theme">
+    <button class="btn btn-link p-1 p-md-2 text-body" (click)="themeService.toggleTheme()" [attr.aria-label]="t()['aria.theme']">
       <i [class]="themeService.themeIcon()" class="fs-5"></i>
     </button>
 
     <!-- Notifications dropdown -->
     <div class="position-relative">
       <button class="btn btn-link p-1 p-md-2 text-body position-relative" (click)="toggleNotifications()"
-        aria-label="Notifications">
+        [attr.aria-label]="t()['aria.notifications']">
         <i class="bi-bell fs-5"></i>
         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">3</span>
       </button>
@@ -50,11 +50,11 @@
       <div class="dropdown-panel position-absolute end-0 mt-1 bg-body border rounded shadow-sm"
         style="width: 280px; z-index: 1060;">
         <div class="p-3 border-bottom">
-          <span class="fw-semibold small">Notificaciones</span>
+          <span class="fw-semibold small">{{ t()['topbar.notifications.title'] }}</span>
         </div>
         <div class="p-3 text-center text-secondary small">
           <i class="bi-inbox fs-4 d-block mb-2"></i>
-          <span>No tienes notificaciones nuevas</span>
+          <span>{{ t()['topbar.notifications.empty'] }}</span>
         </div>
       </div>
       }
@@ -62,7 +62,7 @@
 
     <!-- Language dropdown -->
     <div class="position-relative">
-      <button class="btn btn-link p-1 p-md-2 text-body" (click)="toggleLanguage()" aria-label="Language">
+      <button class="btn btn-link p-1 p-md-2 text-body" (click)="toggleLanguage()" [attr.aria-label]="t()['aria.language']">
         <i class="bi-globe2 fs-5"></i>
       </button>
       @if (languageOpen()) {
@@ -70,11 +70,11 @@
         style="min-width: 80px; z-index: 1060;">
         <li>
           <button class="btn btn-link text-decoration-none text-body d-block w-100 text-start px-3 py-1 small"
-            [class.active]="selectedLanguage() === 'ES'" (click)="selectLanguage('ES')">ES</button>
+            [class.active]="currentLang() === 'es'" (click)="selectLanguage('es')">ES</button>
         </li>
         <li>
           <button class="btn btn-link text-decoration-none text-body d-block w-100 text-start px-3 py-1 small"
-            [class.active]="selectedLanguage() === 'EN'" (click)="selectLanguage('EN')">EN</button>
+            [class.active]="currentLang() === 'en'" (click)="selectLanguage('en')">EN</button>
         </li>
       </ul>
       }

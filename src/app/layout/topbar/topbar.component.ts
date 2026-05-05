@@ -1,9 +1,11 @@
-import { Component, ChangeDetectionStrategy, inject, signal } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal, computed } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SidebarService } from '../../core/services/sidebar.service';
 import { ThemeService } from '../../core/services/theme.service';
+import { TranslationService } from '../../core/services/translation.service';
+import type { Language } from '../../types/translation-keys';
 
 @Component({
   selector: 'app-topbar',
@@ -16,23 +18,28 @@ import { ThemeService } from '../../core/services/theme.service';
 export class TopbarComponent {
   protected readonly sidebarService = inject(SidebarService);
   protected readonly themeService = inject(ThemeService);
-  protected readonly searchOpen = signal(false);
-  protected readonly currentPlaceholder = signal('Buscar en el portafolio...');
-  protected readonly languageOpen = signal(false);
-  protected readonly notificationsOpen = signal(false);
-  protected readonly selectedLanguage = signal('ES');
-
+  private readonly translationService = inject(TranslationService);
   private readonly router = inject(Router);
 
-  private readonly placeholderMap: Record<string, string> = {
-    '/dashboard': 'Buscar métricas del dashboard...',
-    '/dashboards/tiempo-produccion': 'Buscar tiempos de producción...',
-    '/dashboards/respuestas-promedio': 'Buscar respuestas promedio...',
-    '/profile': 'Buscar en mi perfil...',
-    '/projects': 'Buscar proyectos...',
-    '/career': 'Buscar experiencia...',
-    '/contact': 'Buscar contacto...',
-    '/ui-test': 'Buscando...',
+  protected readonly t = this.translationService.t;
+  protected readonly currentLang = this.translationService.currentLang;
+  protected readonly searchOpen = signal(false);
+  private readonly currentRoute = signal('');
+  protected readonly currentPlaceholder = computed(() => {
+    const key = this.placeholderKeyMap[this.currentRoute()] ?? 'topbar.search.placeholder.default';
+    return this.translationService.t()[key];
+  });
+  protected readonly languageOpen = signal(false);
+  protected readonly notificationsOpen = signal(false);
+
+  private readonly placeholderKeyMap: Record<string, string> = {
+    '/dashboard': 'topbar.search.placeholder.dashboard',
+    '/dashboards/tiempo-produccion': 'topbar.search.placeholder.tiempoProduccion',
+    '/dashboards/respuestas-promedio': 'topbar.search.placeholder.respuestasPromedio',
+    '/profile': 'topbar.search.placeholder.profile',
+    '/projects': 'topbar.search.placeholder.projects',
+    '/career': 'topbar.search.placeholder.career',
+    '/contact': 'topbar.search.placeholder.contact',
   };
 
   constructor() {
@@ -40,7 +47,7 @@ export class TopbarComponent {
       filter((e): e is NavigationEnd => e instanceof NavigationEnd),
       takeUntilDestroyed(),
     ).subscribe(event => {
-      this.currentPlaceholder.set(this.placeholderMap[event.urlAfterRedirects] ?? 'Buscar en el portafolio...');
+      this.currentRoute.set(event.urlAfterRedirects);
     });
   }
 
@@ -61,7 +68,7 @@ export class TopbarComponent {
   }
 
   protected selectLanguage(lang: string): void {
-    this.selectedLanguage.set(lang);
+    this.translationService.switchLanguage(lang as Language);
     this.languageOpen.set(false);
   }
 }

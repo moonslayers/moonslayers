@@ -24,3 +24,43 @@
 
 - Las funciones de Bootstrap JS (`data-bs-toggle`, `data-bs-dismiss`, etc.) no funcionan en Angular porque Bootstrap JS no está diseñado para trabajar con el lifecycle de Angular ni con ChangeDetection OnPush.
 - **Solución**: Implementar toda la interactividad con Angular puro: signals + `@if` para mostrar/ocultar, eventos `(click)` para toggle.
+
+## Sistema de internacionalización (i18n)
+
+Todas las strings visibles deben usar el sistema de traducciones. El proyecto usa un servicio custom con signals (sin librerías externas).
+
+### Arquitectura
+
+- `src/app/types/translation-keys.ts` — Define `TranslationKey`, `Language`, y la lista `TRANSLATION_KEYS` (fuente única de verdad).
+- `src/app/translations/es.ts` / `en.ts` — Traducciones por idioma con todas las keys.
+- `src/app/translations/index.ts` — Barrel export que agrupa los idiomas.
+- `src/app/core/services/translation.service.ts` — Servicio con `t` (computed signal) para acceso reactivo a traducciones.
+
+### Cómo usar
+
+- **En templates HTML**: `{{ t()['namespace.key'] }}`
+- **En atributos**: `[attr.aria-label]="t()['namespace.key']"`
+- **En placeholders**: `[placeholder]="t()['namespace.key']"`
+- **En TypeScript**: `this.translationService.t()['namespace.key']`
+
+### Inyectar el servicio
+
+```typescript
+private readonly translationService = inject(TranslationService);
+protected readonly t = this.translationService.t;  // Para usar en template
+protected readonly currentLang = this.translationService.currentLang;  // Para saber el idioma activo
+```
+
+### Cómo agregar un nuevo texto traducible
+
+1. Agregar la key al array `TRANSLATION_KEYS` en `src/app/types/translation-keys.ts`
+2. Agregar la traducción en `src/app/translations/es.ts`
+3. Agregar la traducción en `src/app/translations/en.ts`
+4. Usar `{{ t()['nueva.key'] }}` en el template
+
+### Cómo agregar un nuevo idioma
+
+1. Crear `src/app/translations/fr.ts` (todos los idiomas deben tener las mismas keys)
+2. Agregar `'fr'` al tipo `Language` en `src/app/types/translation-keys.ts`
+3. Importar e incluir en `translations/index.ts`
+4. Agregar el botón de idioma en el topbar

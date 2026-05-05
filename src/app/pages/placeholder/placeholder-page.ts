@@ -1,5 +1,6 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, computed } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TranslationService } from '../../core/services/translation.service';
 
 @Component({
   selector: 'app-placeholder-page',
@@ -8,5 +9,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PlaceholderPage {
   private route = inject(ActivatedRoute);
-  protected label = this.route.snapshot.data['label'] ?? 'Sección';
+  private translationService = inject(TranslationService);
+
+  protected readonly label = computed(() => {
+    const key = this.route.snapshot.data['labelKey'] as string | undefined;
+    const translations = this.translationService.t();
+    return key ? translations[key] : 'Sección';
+  });
+
+  protected readonly t = this.translationService.t;
 }
