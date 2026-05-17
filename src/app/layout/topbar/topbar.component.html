@@ -49,18 +49,41 @@
         <button class="btn btn-link p-1 text-body position-relative" (click)="toggleNotifications()"
           [attr.aria-label]="t()['aria.notifications']">
           <i class="bi-bell fs-5"></i>
+          @if (unreadCount() > 0) {
           <span
-            class="position-absolute top-0 mt-1 start-100 translate-middle badge rounded-pill bg-danger small">3</span>
+            class="position-absolute top-0 mt-1 start-100 translate-middle badge rounded-pill bg-danger small">{{
+            unreadCount() }}</span>
+          }
         </button>
         @if (notificationsOpen()) {
-        <div class="dropdown-panel position-absolute end-0 mt-1 bg-body border rounded shadow-sm"
-          style="width: 280px; z-index: 1060;">
+        <div class="dropdown-panel dropdown-notifications position-absolute end-0 mt-1 bg-body border rounded shadow-sm"
+          style="z-index: 1060;">
           <div class="p-3 border-bottom">
             <span class="fw-semibold small">{{ t()['topbar.notifications.title'] }}</span>
           </div>
-          <div class="p-3 text-center text-secondary small">
-            <i class="bi-inbox fs-4 d-block mb-2"></i>
-            <span>{{ t()['topbar.notifications.empty'] }}</span>
+          <div class="list-unstyled mb-0">
+            @for (notif of mockNotifications(); track notif.textKey) {
+            <div class="d-flex align-items-start gap-3 px-3 py-2 border-bottom"
+              [class.bg-body-tertiary]="notif.unread">
+              <div class="d-flex align-items-center justify-content-center flex-shrink-0"
+                style="width: 36px; height: 36px;">
+                <i [class]="notif.icon + ' ' + notif.colorClass + ' fs-5'"></i>
+              </div>
+              <div class="flex-grow-1 min-w-0">
+                <div class="small">{{ t()[notif.textKey] }}</div>
+                <div class="small text-secondary mt-1">{{ t()[notif.timeKey] }}</div>
+              </div>
+              @if (notif.unread) {
+              <div class="flex-shrink-0 mt-1">
+                <span class="badge rounded-pill bg-primary d-block" style="width: 8px; height: 8px; padding: 0;">&nbsp;</span>
+              </div>
+              }
+            </div>
+            }
+          </div>
+          <div class="p-2 text-center border-top">
+            <button class="btn btn-link btn-sm text-decoration-none text-body-secondary small">{{
+              t()['topbar.notifications.viewAll'] }}</button>
           </div>
         </div>
         }

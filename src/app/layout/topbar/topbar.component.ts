@@ -7,6 +7,14 @@ import { ThemeService } from '../../core/services/theme.service';
 import { TranslationService } from '../../core/services/translation.service';
 import type { Language } from '../../types/translation-keys';
 
+interface Notification {
+  icon: string;
+  textKey: string;
+  timeKey: string;
+  unread: boolean;
+  colorClass: string;
+}
+
 @Component({
   selector: 'app-topbar',
   standalone: true,
@@ -40,6 +48,34 @@ export class TopbarComponent {
   });
   protected readonly languageOpen = signal(false);
   protected readonly notificationsOpen = signal(false);
+
+  protected readonly mockNotifications = signal<Notification[]>([
+    {
+      icon: 'bi-folder-plus',
+      textKey: 'topbar.notifications.projectAdded',
+      timeKey: 'topbar.notifications.time1',
+      unread: true,
+      colorClass: 'text-success',
+    },
+    {
+      icon: 'bi-eye',
+      textKey: 'topbar.notifications.profileViews',
+      timeKey: 'topbar.notifications.time2',
+      unread: true,
+      colorClass: 'text-primary',
+    },
+    {
+      icon: 'bi-code-slash',
+      textKey: 'topbar.notifications.newSkill',
+      timeKey: 'topbar.notifications.time3',
+      unread: false,
+      colorClass: 'text-info',
+    },
+  ]);
+
+  protected readonly unreadCount = computed(() =>
+    this.mockNotifications().filter(n => n.unread).length
+  );
 
   private readonly placeholderKeyMap: Record<string, string> = {
     '/dashboard': 'topbar.search.placeholder.dashboard',

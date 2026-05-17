@@ -2,6 +2,20 @@
   animation: fadeSlideDown 0.15s ease-out;
 }
 
+.dropdown-notifications {
+  width: calc(100vw - 2rem);
+  max-height: 70vh;
+  overflow-y: auto;
+
+  @media (min-width: 576px) {
+    width: 360px;
+  }
+
+  @media (min-width: 992px) {
+    width: 420px;
+  }
+}
+
 @keyframes fadeSlideDown {
   from {
     opacity: 0;
