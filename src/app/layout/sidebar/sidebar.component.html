@@ -10,23 +10,22 @@
 
   <!-- Scrollable navigation -->
   <nav class="d-flex flex-column gap-1 overflow-auto flex-grow-1 px-3 pb-3">
-    <!-- MAIN SECTION -->
-    <div class="d-flex flex-column gap-1">
-      @for (item of mainMenuItems(); track item.route || $index) {
-      <ng-container *ngTemplateOutlet="menuRecursion; context: { $implicit: item, depth: 0 }" />
-      }
+    @for (section of sections(); track section.name; let first = $first) {
+    <!-- Section header (skipped for the first section "main") -->
+    @if (!first) {
+    <div class="d-flex align-items-center gap-2 mt-2 mb-1">
+      <span class="small fw-semibold text-secondary text-nowrap">{{ toTitleCase(section.name) }}</span>
+      <hr class="flex-grow-1 my-0 text-secondary opacity-50">
     </div>
-
-    @if (secondaryMenuItems().length > 0) {
-    <hr class="my-2 text-secondary opacity-50">
     }
 
-    <!-- SECONDARY SECTION -->
+    <!-- Section items -->
     <div class="d-flex flex-column gap-1">
-      @for (item of secondaryMenuItems(); track item.route || $index) {
+      @for (item of section.items; track item.route || $index) {
       <ng-container *ngTemplateOutlet="menuRecursion; context: { $implicit: item, depth: 0 }" />
       }
     </div>
+    }
   </nav>
 
   <!-- Profile Footer -->
@@ -59,7 +58,8 @@
     <!-- Expandable parent item -->
     <button type="button"
       class="sidebar-item btn btn-link text-decoration-none text-body d-flex align-items-center gap-2 rounded text-start w-100"
-      [class.p-3]="depth === 0" [class.p-2]="depth > 0" [class.small]="depth > 0" (click)="toggleSubMenu(item, depth)">
+      [class.p-3]="depth === 0" [class.p-2]="depth > 0" [class.small]="depth > 0"
+      [class.active]="isSubMenuOpen(item, depth)" (click)="toggleSubMenu(item, depth)">
       @if (depth === 0) {
       <i [class]="item.icon" class="text-center flex-shrink-0"></i>
       } @else {

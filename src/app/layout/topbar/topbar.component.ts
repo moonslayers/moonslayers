@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, inject, signal, computed } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, signal, computed, ViewChildren, ElementRef, QueryList } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -14,12 +14,18 @@ import type { Language } from '../../types/translation-keys';
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '(document:click)': 'onDocumentClick($event)'
+  }
 })
 export class TopbarComponent {
   protected readonly sidebarService = inject(SidebarService);
   protected readonly themeService = inject(ThemeService);
   private readonly translationService = inject(TranslationService);
   private readonly router = inject(Router);
+
+  @ViewChildren('dropdownContainer', { read: ElementRef })
+  protected dropdownContainers!: QueryList<ElementRef<HTMLElement>>;
 
   protected readonly t = this.translationService.t;
   protected readonly currentLang = this.translationService.currentLang;
@@ -70,5 +76,17 @@ export class TopbarComponent {
   protected selectLanguage(lang: string): void {
     this.translationService.switchLanguage(lang as Language);
     this.languageOpen.set(false);
+  }
+
+  protected onDocumentClick(event: MouseEvent): void {
+    const target = event.target as Node;
+    const isInside = this.dropdownContainers?.toArray().some(
+      ref => ref.nativeElement.contains(target)
+    );
+    if (!isInside) {
+      this.searchOpen.set(false);
+      this.notificationsOpen.set(false);
+      this.languageOpen.set(false);
+    }
   }
 }

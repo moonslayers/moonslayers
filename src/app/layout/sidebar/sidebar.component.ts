@@ -1,6 +1,8 @@
-import { Component, ChangeDetectionStrategy, signal, inject, computed } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, ChangeDetectionStrategy, signal, inject, computed, afterNextRender } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive, NavigationEnd } from '@angular/router';
 import { NgTemplateOutlet } from '@angular/common';
+import { filter } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SidebarService } from '../../core/services/sidebar.service';
 import { TranslationService } from '../../core/services/translation.service';
 
@@ -9,7 +11,7 @@ interface SidebarItemConfig {
   icon: string;
   route?: string;
   children?: SidebarItemConfig[];
-  section: 'main' | 'secondary';
+  section: string;
 }
 
 interface SidebarItem {
@@ -17,7 +19,12 @@ interface SidebarItem {
   icon: string;
   route?: string;
   children?: SidebarItem[];
-  section: 'main' | 'secondary';
+  section: string;
+}
+
+interface SidebarSection {
+  name: string;
+  items: SidebarItem[];
 }
 
 @Component({
@@ -32,6 +39,7 @@ interface SidebarItem {
 })
 export class SidebarComponent {
   protected sidebarService = inject(SidebarService);
+  private readonly router = inject(Router);
   private readonly translationService = inject(TranslationService);
   protected readonly t = this.translationService.t;
 
@@ -54,13 +62,24 @@ export class SidebarComponent {
     { labelKey: 'sidebar.contacto', icon: 'bi-envelope', route: '/contact', section: 'secondary' },
   ];
 
-  protected readonly mainMenuItems = computed<SidebarItem[]>(() =>
-    this.resolveItems(this.menuConfig.filter(i => i.section === 'main'))
-  );
+  protected readonly sections = computed<SidebarSection[]>(() => {
+    const items = this.resolveItems(this.menuConfig);
+    const sectionOrder: string[] = [];
+    const sectionMap = new Map<string, SidebarItem[]>();
 
-  protected readonly secondaryMenuItems = computed<SidebarItem[]>(() =>
-    this.resolveItems(this.menuConfig.filter(i => i.section === 'secondary'))
-  );
+    for (const item of items) {
+      if (!sectionMap.has(item.section)) {
+        sectionMap.set(item.section, []);
+        sectionOrder.push(item.section);
+      }
+      sectionMap.get(item.section)!.push(item);
+    }
+
+    return sectionOrder.map(name => ({
+      name,
+      items: sectionMap.get(name)!
+    }));
+  });
 
   private openSubMenus = signal<Set<string>>(new Set());
 
@@ -90,6 +109,56 @@ export class SidebarComponent {
 
   protected isSubMenuOpen(item: SidebarItem, depth: number): boolean {
     return this.openSubMenus().has(`${depth}-${item.label}`);
+  }
+
+  protected toTitleCase(str: string): string {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+
+  private autoOpenSubMenusForActiveRoute(): void {
+    const currentSections = this.sections();
+    this.openSubMenus.update(set => {
+      const next = new Set(set);
+      for (const section of currentSections) {
+        this.markActiveInItems(section.items, 0, next);
+      }
+      return next;
+    });
+  }
+
+  private markActiveInItems(items: SidebarItem[], depth: number, set: Set<string>): boolean {
+    let hasActive = false;
+    for (const item of items) {
+      if (item.route && this.router.isActive(item.route, {
+        paths: 'subset',
+        queryParams: 'ignored',
+        fragment: 'ignored',
+        matrixParams: 'ignored'
+      })) {
+        hasActive = true;
+      }
+      if (item.children) {
+        const childHasActive = this.markActiveInItems(item.children, depth + 1, set);
+        if (childHasActive) {
+          set.add(`${depth}-${item.label}`);
+          hasActive = true;
+        }
+      }
+    }
+    return hasActive;
+  }
+
+  constructor() {
+    afterNextRender(() => {
+      this.autoOpenSubMenusForActiveRoute();
+    });
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      takeUntilDestroyed()
+    ).subscribe(() => {
+      this.autoOpenSubMenusForActiveRoute();
+    });
   }
 
   protected logout(): void {

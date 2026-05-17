@@ -1,6 +1,7 @@
 <header class="d-flex align-items-center justify-content-between px-2 px-md-3 border-bottom py-2">
   <div class="d-flex align-items-center gap-1 gap-md-2">
-      <button class="btn btn-link p-1 p-md-2 text-body" (click)="sidebarService.toggle()" [attr.aria-label]="t()['aria.toggleSidebar']">
+    <button class="btn btn-link p-1 p-md-2 text-body" (click)="sidebarService.toggle()"
+      [attr.aria-label]="t()['aria.toggleSidebar']">
       <i class="bi-list fs-5"></i>
     </button>
 
@@ -17,7 +18,7 @@
   <div class="d-flex align-items-center gap-0 gap-md-1">
 
     <!-- Search: Mobile (icon with dropdown) -->
-    <div class="d-md-none position-relative">
+    <div #dropdownContainer class="d-md-none position-relative">
       <button class="btn btn-link p-1 p-md-2 text-body" (click)="toggleSearch()" [attr.aria-label]="t()['aria.search']">
         <i class="bi-search fs-5"></i>
       </button>
@@ -35,12 +36,13 @@
       }
     </div>
 
-    <button class="btn btn-link p-1 p-md-2 text-body" (click)="themeService.toggleTheme()" [attr.aria-label]="t()['aria.theme']">
+    <button class="btn btn-link p-1 p-md-2 text-body" (click)="themeService.toggleTheme()"
+      [attr.aria-label]="t()['aria.theme']">
       <i [class]="themeService.themeIcon()" class="fs-5"></i>
     </button>
 
     <!-- Notifications dropdown -->
-    <div class="position-relative">
+    <div #dropdownContainer class="position-relative">
       <button class="btn btn-link p-1 p-md-2 text-body position-relative" (click)="toggleNotifications()"
         [attr.aria-label]="t()['aria.notifications']">
         <i class="bi-bell fs-5"></i>
@@ -61,8 +63,9 @@
     </div>
 
     <!-- Language dropdown -->
-    <div class="position-relative">
-      <button class="btn btn-link p-1 p-md-2 text-body" (click)="toggleLanguage()" [attr.aria-label]="t()['aria.language']">
+    <div #dropdownContainer class="position-relative">
+      <button class="btn btn-link p-1 p-md-2 text-body" (click)="toggleLanguage()"
+        [attr.aria-label]="t()['aria.language']">
         <i class="bi-globe2 fs-5"></i>
       </button>
       @if (languageOpen()) {
