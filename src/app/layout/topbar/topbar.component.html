@@ -37,7 +37,7 @@
     </div>
 
     <!-- Action buttons card -->
-    <div class="d-flex align-items-center gap-1 bg-body-tertiary border rounded-3 px-2 py-1">
+    <div class="d-flex align-items-center gap-1 bg-body-tertiary border rounded px-2 py-1">
 
       <button class="btn btn-link p-1 text-body" (click)="themeService.toggleTheme()"
         [attr.aria-label]="t()['aria.theme']">
@@ -68,8 +68,7 @@
 
       <!-- Language dropdown -->
       <div #dropdownContainer class="position-relative">
-        <button class="btn btn-link p-1 text-body" (click)="toggleLanguage()"
-          [attr.aria-label]="t()['aria.language']">
+        <button class="btn btn-link p-1 text-body" (click)="toggleLanguage()" [attr.aria-label]="t()['aria.language']">
           <i class="bi-globe2 fs-5"></i>
         </button>
         @if (languageOpen()) {
@@ -90,7 +89,7 @@
     </div>
 
     <!-- Profile card -->
-    <a class="d-flex align-items-center gap-2 bg-body-tertiary border rounded-3 px-3 py-1 text-decoration-none text-body"
+    <a class="d-flex align-items-center gap-2 bg-body-tertiary border rounded px-3 py-1 text-decoration-none text-body"
       [routerLink]="['/profile']" routerLinkActive="text-primary">
       <i class="bi bi-person-circle fs-4"></i>
       <div class="d-none d-md-flex flex-column lh-sm">
