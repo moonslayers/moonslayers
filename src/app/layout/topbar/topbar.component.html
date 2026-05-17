@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <div class="d-flex align-items-center gap-0 gap-md-1">
+  <div class="d-flex align-items-center gap-2">
 
     <!-- Search: Mobile (icon with dropdown) -->
     <div #dropdownContainer class="d-md-none position-relative">
@@ -36,61 +36,68 @@
       }
     </div>
 
-    <button class="btn btn-link p-1 p-md-2 text-body" (click)="themeService.toggleTheme()"
-      [attr.aria-label]="t()['aria.theme']">
-      <i [class]="themeService.themeIcon()" class="fs-5"></i>
-    </button>
+    <!-- Action buttons card -->
+    <div class="d-flex align-items-center gap-1 bg-body-tertiary border rounded-3 px-2 py-1">
 
-    <!-- Notifications dropdown -->
-    <div #dropdownContainer class="position-relative">
-      <button class="btn btn-link p-1 p-md-2 text-body position-relative" (click)="toggleNotifications()"
-        [attr.aria-label]="t()['aria.notifications']">
-        <i class="bi-bell fs-5"></i>
-        <span
-          class="position-absolute top-0 mt-1 start-100 translate-middle badge rounded-pill bg-danger small">3</span>
+      <button class="btn btn-link p-1 text-body" (click)="themeService.toggleTheme()"
+        [attr.aria-label]="t()['aria.theme']">
+        <i [class]="themeService.themeIcon()" class="fs-5"></i>
       </button>
-      @if (notificationsOpen()) {
-      <div class="dropdown-panel position-absolute end-0 mt-1 bg-body border rounded shadow-sm"
-        style="width: 280px; z-index: 1060;">
-        <div class="p-3 border-bottom">
-          <span class="fw-semibold small">{{ t()['topbar.notifications.title'] }}</span>
+
+      <!-- Notifications dropdown -->
+      <div #dropdownContainer class="position-relative">
+        <button class="btn btn-link p-1 text-body position-relative" (click)="toggleNotifications()"
+          [attr.aria-label]="t()['aria.notifications']">
+          <i class="bi-bell fs-5"></i>
+          <span
+            class="position-absolute top-0 mt-1 start-100 translate-middle badge rounded-pill bg-danger small">3</span>
+        </button>
+        @if (notificationsOpen()) {
+        <div class="dropdown-panel position-absolute end-0 mt-1 bg-body border rounded shadow-sm"
+          style="width: 280px; z-index: 1060;">
+          <div class="p-3 border-bottom">
+            <span class="fw-semibold small">{{ t()['topbar.notifications.title'] }}</span>
+          </div>
+          <div class="p-3 text-center text-secondary small">
+            <i class="bi-inbox fs-4 d-block mb-2"></i>
+            <span>{{ t()['topbar.notifications.empty'] }}</span>
+          </div>
         </div>
-        <div class="p-3 text-center text-secondary small">
-          <i class="bi-inbox fs-4 d-block mb-2"></i>
-          <span>{{ t()['topbar.notifications.empty'] }}</span>
-        </div>
+        }
       </div>
-      }
+
+      <!-- Language dropdown -->
+      <div #dropdownContainer class="position-relative">
+        <button class="btn btn-link p-1 text-body" (click)="toggleLanguage()"
+          [attr.aria-label]="t()['aria.language']">
+          <i class="bi-globe2 fs-5"></i>
+        </button>
+        @if (languageOpen()) {
+        <ul class="dropdown-panel position-absolute end-0 mt-1 bg-body border rounded shadow-sm list-unstyled mb-0 py-1"
+          style="min-width: 80px; z-index: 1060;">
+          <li>
+            <button class="btn btn-link text-decoration-none text-body d-block w-100 text-start px-3 py-1 small"
+              [class.active]="currentLang() === 'es'" (click)="selectLanguage('es')">ES</button>
+          </li>
+          <li>
+            <button class="btn btn-link text-decoration-none text-body d-block w-100 text-start px-3 py-1 small"
+              [class.active]="currentLang() === 'en'" (click)="selectLanguage('en')">EN</button>
+          </li>
+        </ul>
+        }
+      </div>
+
     </div>
 
-    <!-- Language dropdown -->
-    <div #dropdownContainer class="position-relative">
-      <button class="btn btn-link p-1 p-md-2 text-body" (click)="toggleLanguage()"
-        [attr.aria-label]="t()['aria.language']">
-        <i class="bi-globe2 fs-5"></i>
-      </button>
-      @if (languageOpen()) {
-      <ul class="dropdown-panel position-absolute end-0 mt-1 bg-body border rounded shadow-sm list-unstyled mb-0 py-1"
-        style="min-width: 80px; z-index: 1060;">
-        <li>
-          <button class="btn btn-link text-decoration-none text-body d-block w-100 text-start px-3 py-1 small"
-            [class.active]="currentLang() === 'es'" (click)="selectLanguage('es')">ES</button>
-        </li>
-        <li>
-          <button class="btn btn-link text-decoration-none text-body d-block w-100 text-start px-3 py-1 small"
-            [class.active]="currentLang() === 'en'" (click)="selectLanguage('en')">EN</button>
-        </li>
-      </ul>
-      }
-    </div>
+    <!-- Profile card -->
+    <a class="d-flex align-items-center gap-2 bg-body-tertiary border rounded-3 px-3 py-1 text-decoration-none text-body"
+      [routerLink]="['/profile']" routerLinkActive="text-primary">
+      <i class="bi bi-person-circle fs-4"></i>
+      <div class="d-none d-md-flex flex-column lh-sm">
+        <span class="fw-semibold small">{{ userName }}</span>
+        <span class="small text-secondary">{{ userRole }}</span>
+      </div>
+    </a>
 
-    <div class="vr mx-1"></div>
-
-    <div class="d-flex align-items-center gap-2 ms-0 ms-md-1">
-      <div
-        class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center fw-bold px-2 py-1 small">
-        JR</div>
-      <span class="d-none d-md-inline small fw-medium">Junior</span>
-    </div>
   </div>
 </header>

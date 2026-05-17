@@ -2,8 +2,8 @@
   [class.is-open]="sidebarService.isOpen()">
 
   <!-- Brand / Logo - fixed at top -->
-  <div class="d-flex align-items-center gap-2 px-3 pt-3 pb-2">
-    <i class="bi bi-moon-stars fs-5"></i>
+  <div class="d-flex align-items-center gap-2 p-3 sidebar-item-icon-bg">
+    <i class="bi bi-moon-stars sidebar-item-icon fs-5"></i>
     <span class="fw-bold">Moonslayers</span>
     <span class="badge bg-primary bg-opacity-50 border border-light rounded-pill ms-auto small fw-normal">v0.5.8</span>
   </div>
@@ -14,7 +14,7 @@
     <!-- Section header (skipped for the first section "main") -->
     @if (!first) {
     <div class="d-flex align-items-center gap-2 mt-2 mb-1">
-      <span class="small fw-semibold text-secondary text-nowrap">{{ toTitleCase(section.name) }}</span>
+      <span class="small fw-semibold text-secondary text-nowrap">{{ getSectionTitle(section.name) }}</span>
       <hr class="flex-grow-1 my-0 text-secondary opacity-50">
     </div>
     }
@@ -29,20 +29,26 @@
   </nav>
 
   <!-- Profile Footer -->
-  <div class="sidebar-footer border-top p-3 flex-shrink-0">
-    <a class="d-flex align-items-center gap-3 text-decoration-none text-body" [routerLink]="['/profile']"
-      routerLinkActive="text-primary">
-      <i class="bi bi-person-circle fs-3"></i>
-      <div class="d-flex flex-column lh-sm">
-        <span class="fw-semibold">{{ userName }}</span>
-        <span class="small text-secondary">{{ userRole }}</span>
+  <div class="p-2 border-top">
+    <div class="card">
+      <div class="card-body p-2 px-3">
+        <div class="sidebar-footer flex-shrink-0">
+          <a class="d-flex align-items-center gap-3 text-decoration-none text-body" [routerLink]="['/profile']"
+            routerLinkActive="text-primary">
+            <i class="bi bi-person-circle fs-3"></i>
+            <div class="d-flex flex-column lh-sm">
+              <span class="fw-semibold">{{ userName }}</span>
+              <span class="small text-secondary">{{ userRole }}</span>
+            </div>
+          </a>
+          <button type="button"
+            class="btn btn-outline-danger btn-sm d-flex align-items-center justify-content-center gap-2 mt-2 w-100"
+            (click)="logout()" [attr.aria-label]="t()['sidebar.logout']">
+            <i class="bi bi-box-arrow-right"></i>
+          </button>
+        </div>
       </div>
-    </a>
-    <button type="button"
-      class="btn btn-outline-danger btn-sm d-flex align-items-center justify-content-center gap-2 mt-2 w-100"
-      (click)="logout()" [attr.aria-label]="t()['sidebar.logout']">
-      <i class="bi bi-box-arrow-right"></i>
-    </button>
+    </div>
   </div>
 </aside>
 

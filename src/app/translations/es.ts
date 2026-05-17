@@ -8,6 +8,8 @@ export const es = {
   'sidebar.proyectos': 'Proyectos',
   'sidebar.career': 'Carrera',
   'sidebar.contacto': 'Contacto',
+  'sidebar.section.career': 'Carrera',
+  'sidebar.section.info': 'Información',
   'topbar.search.placeholder.default': 'Buscar en el portafolio...',
   'topbar.search.placeholder.dashboard': 'Buscar métricas del dashboard...',
   'topbar.search.placeholder.tiempoProduccion': 'Buscar tiempos de producción...',

@@ -8,6 +8,8 @@ export const TRANSLATION_KEYS = [
   'sidebar.proyectos',
   'sidebar.career',
   'sidebar.contacto',
+  'sidebar.section.career',
+  'sidebar.section.info',
   'topbar.search.placeholder.default',
   'topbar.search.placeholder.dashboard',
   'topbar.search.placeholder.tiempoProduccion',

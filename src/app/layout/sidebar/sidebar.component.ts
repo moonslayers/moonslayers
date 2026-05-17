@@ -57,9 +57,9 @@ export class SidebarComponent {
       ]
     },
     { labelKey: 'sidebar.profile', icon: 'bi-person', route: '/profile', section: 'main' },
-    { labelKey: 'sidebar.proyectos', icon: 'bi-folder', route: '/projects', section: 'secondary' },
-    { labelKey: 'sidebar.career', icon: 'bi-calendar-event', route: '/career', section: 'secondary' },
-    { labelKey: 'sidebar.contacto', icon: 'bi-envelope', route: '/contact', section: 'secondary' },
+    { labelKey: 'sidebar.proyectos', icon: 'bi-folder', route: '/projects', section: 'career' },
+    { labelKey: 'sidebar.career', icon: 'bi-calendar-event', route: '/career', section: 'career' },
+    { labelKey: 'sidebar.contacto', icon: 'bi-envelope', route: '/contact', section: 'info' },
   ];
 
   protected readonly sections = computed<SidebarSection[]>(() => {
@@ -109,6 +109,13 @@ export class SidebarComponent {
 
   protected isSubMenuOpen(item: SidebarItem, depth: number): boolean {
     return this.openSubMenus().has(`${depth}-${item.label}`);
+  }
+
+  protected getSectionTitle(sectionName: string): string {
+    const key = `sidebar.section.${sectionName}`;
+    const translation = this.t()[key];
+    // If translation exists, use it; otherwise fallback to titlecase
+    return translation ?? this.toTitleCase(sectionName);
   }
 
   protected toTitleCase(str: string): string {

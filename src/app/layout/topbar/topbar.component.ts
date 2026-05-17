@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, inject, signal, computed, ViewChildren, ElementRef, QueryList } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SidebarService } from '../../core/services/sidebar.service';
@@ -10,7 +10,7 @@ import type { Language } from '../../types/translation-keys';
 @Component({
   selector: 'app-topbar',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,6 +23,9 @@ export class TopbarComponent {
   protected readonly themeService = inject(ThemeService);
   private readonly translationService = inject(TranslationService);
   private readonly router = inject(Router);
+
+  protected readonly userName = 'moonslayers';
+  protected readonly userRole = 'admin';
 
   @ViewChildren('dropdownContainer', { read: ElementRef })
   protected dropdownContainers!: QueryList<ElementRef<HTMLElement>>;
