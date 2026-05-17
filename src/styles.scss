@@ -48,8 +48,11 @@ $link-hover-color: darken($primary, 10%);
 
   // Cambiar fondos y textos para el dashboard
   --bs-body-bg: #121b22; // fondo muy oscuro, casi negro azulado
+  --bs-body-bg-rgb: 18, 27, 34;
   --bs-body-color: #e0e6ed;
+  --bs-body-color-rgb: 224, 230, 237;
   --bs-tertiary-bg: #1e2a35; // fondo de tarjetas, modales
+  --bs-tertiary-bg-rgb: 30, 42, 53;
   --bs-border-color: #3a4755;
 
   // Ajustar algunas sombras para dar profundidad
