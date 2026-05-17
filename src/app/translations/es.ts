@@ -1,6 +1,7 @@
 export const es = {
   'sidebar.dashboard': 'Dashboard',
   'sidebar.dashboards': 'Dashboards',
+  'sidebar.logout': 'Cerrar sesión',
   'sidebar.profile': 'Perfil',
   'sidebar.tiempoProduccion': 'Tiempo en Producción',
   'sidebar.respuestasPromedio': 'Respuestas Promedio',

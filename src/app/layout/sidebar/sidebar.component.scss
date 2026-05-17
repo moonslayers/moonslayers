@@ -31,14 +31,11 @@
   font-weight: 500;
 }
 
-.sidebar-subitem:hover {
-  color: var(--bs-body-color);
-  background-color: rgba(var(--bs-emphasis-color-rgb), 0.04);
-}
-
-.sidebar-subitem.active {
-  color: var(--bs-primary) !important;
-  background-color: rgba(var(--bs-primary-rgb), 0.08);
+// Icon background only for depth-0 items
+.sidebar-item-icon-bg .sidebar-item-icon {
+  background-color: rgba(var(--bs-primary-rgb), 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.6rem;
 }
 
 // Submenu animation
@@ -52,6 +49,7 @@
     opacity: 0;
     max-height: 0;
   }
+
   to {
     opacity: 1;
     max-height: 200px;
@@ -61,10 +59,21 @@
 // Arrow rotation
 .sidebar-arrow {
   transition: transform 0.25s ease;
+  font-size: 0.75em;
 }
 
 .sidebar-arrow.expanded {
   transform: rotate(180deg);
+}
+
+// Profile footer
+.sidebar-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar-footer .btn:not([class*="btn-outline"]):hover {
+  color: var(--bs-primary);
 }
 
 // Backdrop

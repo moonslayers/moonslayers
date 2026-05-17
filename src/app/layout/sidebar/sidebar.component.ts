@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, signal, inject, computed } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { NgTemplateOutlet } from '@angular/common';
 import { SidebarService } from '../../core/services/sidebar.service';
 import { TranslationService } from '../../core/services/translation.service';
 
@@ -21,7 +22,7 @@ interface SidebarItem {
 
 @Component({
   selector: 'app-sidebar',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, NgTemplateOutlet],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -33,6 +34,10 @@ export class SidebarComponent {
   protected sidebarService = inject(SidebarService);
   private readonly translationService = inject(TranslationService);
   protected readonly t = this.translationService.t;
+
+  // Static user profile data
+  protected readonly userName = 'moonslayers';
+  protected readonly userRole = 'admin';
 
   private readonly menuConfig: SidebarItemConfig[] = [
     { labelKey: 'sidebar.dashboard', icon: 'bi-grid', route: '/dashboard', section: 'main' },
@@ -70,19 +75,25 @@ export class SidebarComponent {
     }));
   }
 
-  protected toggleSubMenu(item: SidebarItem): void {
+  protected toggleSubMenu(item: SidebarItem, depth: number): void {
+    const key = `${depth}-${item.label}`;
     this.openSubMenus.update(set => {
       const next = new Set(set);
-      if (next.has(item.label)) {
-        next.delete(item.label);
+      if (next.has(key)) {
+        next.delete(key);
       } else {
-        next.add(item.label);
+        next.add(key);
       }
       return next;
     });
   }
 
-  protected isSubMenuOpen(item: SidebarItem): boolean {
-    return this.openSubMenus().has(item.label);
+  protected isSubMenuOpen(item: SidebarItem, depth: number): boolean {
+    return this.openSubMenus().has(`${depth}-${item.label}`);
+  }
+
+  protected logout(): void {
+    // Placeholder: en una app real aquí se llamaría al auth service
+    console.log('Logout clicked');
   }
 }

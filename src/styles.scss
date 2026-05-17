@@ -33,26 +33,45 @@ $link-hover-color: darken($primary, 10%);
 // ==========================================
 
 [data-bs-theme="dark"] {
-    --bs-primary: #32b8bf;
-    --bs-primary-rgb: 50, 184, 191;
-    --bs-secondary: #8b9da9;
-    --bs-secondary-rgb: 139, 157, 169;
-    --bs-success: #75b798;
-    --bs-success-rgb: 117, 183, 152;
-    --bs-info: #6edff6;
-    --bs-info-rgb: 110, 223, 246;
-    --bs-warning: #ffda6a;
-    --bs-warning-rgb: 255, 218, 106;
-    --bs-danger: #ea868f;
-    --bs-danger-rgb: 234, 134, 143;
+  --bs-primary: #32b8bf;
+  --bs-primary-rgb: 50, 184, 191;
+  --bs-secondary: #8b9da9;
+  --bs-secondary-rgb: 139, 157, 169;
+  --bs-success: #75b798;
+  --bs-success-rgb: 117, 183, 152;
+  --bs-info: #6edff6;
+  --bs-info-rgb: 110, 223, 246;
+  --bs-warning: #ffda6a;
+  --bs-warning-rgb: 255, 218, 106;
+  --bs-danger: #ea868f;
+  --bs-danger-rgb: 234, 134, 143;
 
-    // Cambiar fondos y textos para el dashboard
-    --bs-body-bg: #121b22; // fondo muy oscuro, casi negro azulado
-    --bs-body-color: #e0e6ed;
-    --bs-tertiary-bg: #1e2a35; // fondo de tarjetas, modales
-    --bs-border-color: #3a4755;
+  // Cambiar fondos y textos para el dashboard
+  --bs-body-bg: #121b22; // fondo muy oscuro, casi negro azulado
+  --bs-body-color: #e0e6ed;
+  --bs-tertiary-bg: #1e2a35; // fondo de tarjetas, modales
+  --bs-border-color: #3a4755;
 
-    // Ajustar algunas sombras para dar profundidad
-    --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
-    --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.4);
+  // Ajustar algunas sombras para dar profundidad
+  --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.4);
+}
+
+// ==========================================
+// 4. Personalización global de btn-outline-*
+//    Sin borde, texto normal, color en hover
+// ==========================================
+@each $color in (primary, secondary, success, info, warning, danger, light, dark) {
+  .btn-outline-#{$color} {
+    --bs-btn-border-color: var(--bs-primary);
+    --bs-btn-color: var(--bs-primary);
+    --bs-btn-hover-color: var(--bs-#{$color});
+    --bs-btn-hover-bg: transparent;
+    --bs-btn-hover-border-color: var(--bs-#{$color});
+    --bs-btn-active-color: var(--bs-body-color);
+    --bs-btn-active-bg: rgba(var(--bs-#{$color}-rgb), 0.12);
+    --bs-btn-active-border-color: transparent;
+    --bs-btn-disabled-color: var(--bs-secondary-color);
+    --bs-btn-disabled-border-color: transparent;
+  }
 }

@@ -1,6 +1,7 @@
 export const TRANSLATION_KEYS = [
   'sidebar.dashboard',
   'sidebar.dashboards',
+  'sidebar.logout',
   'sidebar.profile',
   'sidebar.tiempoProduccion',
   'sidebar.respuestasPromedio',
