@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { PlaceholderPage } from './pages/placeholder/placeholder-page';
 import { UiColorTest } from './shared/ui-color-test/ui-color-test';
+import { DashboardPage } from './pages/dashboard/dashboard-page';
+import { TiempoProduccionPage } from './pages/tiempo-produccion/tiempo-produccion-page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'ui-test', pathMatch: 'full' },
@@ -10,8 +12,8 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       { path: 'ui-test', component: UiColorTest },
-      { path: 'dashboard', component: PlaceholderPage, data: { labelKey: 'sidebar.dashboard' } },
-      { path: 'dashboards/tiempo-produccion', component: PlaceholderPage, data: { labelKey: 'sidebar.tiempoProduccion' } },
+      { path: 'dashboard', component: DashboardPage },
+      { path: 'dashboards/tiempo-produccion', component: TiempoProduccionPage },
       { path: 'dashboards/respuestas-promedio', component: PlaceholderPage, data: { labelKey: 'sidebar.respuestasPromedio' } },
       { path: 'profile', component: PlaceholderPage, data: { labelKey: 'sidebar.profile' } },
       { path: 'projects', component: PlaceholderPage, data: { labelKey: 'sidebar.proyectos' } },

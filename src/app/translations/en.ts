@@ -34,4 +34,70 @@ export const en = {
   'aria.notifications': 'Notifications',
   'aria.language': 'Language',
   'aria.closeMenu': 'Close menu',
+
+  // Dashboard stats
+  'dashboard.stat.experience': 'Years of Experience',
+  'dashboard.stat.projects': 'Projects Completed',
+  'dashboard.stat.technologies': 'Technologies',
+  'dashboard.stat.certifications': 'Certifications',
+
+  // Dashboard charts
+  'dashboard.chart.skillsTitle': 'Skills by Category',
+  'dashboard.chart.projectsTitle': 'Projects per Year',
+
+  // Dashboard skill labels (doughnut)
+  'dashboard.skill.frontend': 'Frontend',
+  'dashboard.skill.backend': 'Backend',
+  'dashboard.skill.devops': 'DevOps',
+  'dashboard.skill.databases': 'Databases',
+  'dashboard.skill.leadership': 'Leadership / PM',
+
+  // Dashboard project cards
+  'dashboard.project.floricultora': 'Floriculture Purchase System',
+  'dashboard.project.floricultoraDesc': 'Full purchase automation with Angular 19, Node.js, Express, C#/.NET and Docker. Eliminated the need for a dedicated buyer.',
+  'dashboard.project.credits': 'FONDOSBC Credit System',
+  'dashboard.project.creditsDesc': 'Led a team of 5 developers, legacy system migration, complete government credit management.',
+  'dashboard.project.sei': 'SEI Management System',
+  'dashboard.project.seiDesc': 'Helpdesk with metric dashboards, unit and feature tests on 100% of APIs, automated CI/CD with lint on PRs.',
+
+  // Dashboard reference cards
+  'dashboard.ref.productionTime': 'Production Time',
+  'dashboard.ref.productionTimeDesc': 'Timeline of production projects with their tech stacks',
+  'dashboard.ref.avgResponses': 'Average Responses',
+  'dashboard.ref.avgResponsesDesc': 'Key performance, quality and satisfaction indicators',
+
+  // Tiempo Producción - stats
+  'tiempoProduccion.stat.projects': 'Projects in Production',
+  'tiempoProduccion.stat.yearsInProd': 'Years in Production',
+  'tiempoProduccion.stat.technologies': 'Unique Technologies',
+  'tiempoProduccion.stat.clients': 'Clients / Entities',
+
+  // Tiempo Producción - sections
+  'tiempoProduccion.section.timeline': 'Timeline',
+  'tiempoProduccion.section.techFreq': 'Most Used Technologies',
+
+  // Tiempo Producción - projects
+  'tiempoProduccion.project.covid': 'COVID News Web System',
+  'tiempoProduccion.project.psicologica': 'University Psych. Support App',
+  'tiempoProduccion.project.floricultora': 'Floriculture Purchase System',
+  'tiempoProduccion.project.almacenes': 'Warehouse Management System',
+  'tiempoProduccion.project.creditos': 'FONDOSBC Credit System',
+  'tiempoProduccion.project.sei': 'SEI Management System',
+  'tiempoProduccion.project.estimulos': 'SE Tax Incentives System',
+  'tiempoProduccion.project.landing': 'Industrial Air Compressor Landing',
+
+  // Tiempo Producción - roles
+  'tiempoProduccion.role.intern': 'Intern',
+  'tiempoProduccion.role.fullstack': 'Fullstack Developer',
+  'tiempoProduccion.role.frontend': 'Frontend + CI/CD',
+  'tiempoProduccion.role.leader': 'Tech Lead',
+  'tiempoProduccion.role.freelance': 'Freelance',
+
+  // Tiempo Producción - periods
+  'tiempoProduccion.period.6months': '6 months',
+  'tiempoProduccion.period.1year': '1 year',
+  'tiempoProduccion.period.ongoing': 'Ongoing',
+
+  // Tiempo Producción - chart
+  'tiempoProduccion.chart.projectsLabel': 'Projects',
 } as const satisfies Record<string, string>;

@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+}
+
+canvas {
+  display: block;
+  width: 100% !important;
+}

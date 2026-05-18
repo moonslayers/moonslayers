@@ -34,4 +34,70 @@ export const es = {
   'aria.notifications': 'Notificaciones',
   'aria.language': 'Idioma',
   'aria.closeMenu': 'Cerrar menú',
+
+  // Dashboard stats
+  'dashboard.stat.experience': 'Años de Experiencia',
+  'dashboard.stat.projects': 'Proyectos Completados',
+  'dashboard.stat.technologies': 'Tecnologías',
+  'dashboard.stat.certifications': 'Certificaciones',
+
+  // Dashboard charts
+  'dashboard.chart.skillsTitle': 'Skills por Categoría',
+  'dashboard.chart.projectsTitle': 'Proyectos por Año',
+
+  // Dashboard skill labels (doughnut)
+  'dashboard.skill.frontend': 'Frontend',
+  'dashboard.skill.backend': 'Backend',
+  'dashboard.skill.devops': 'DevOps',
+  'dashboard.skill.databases': 'Bases de Datos',
+  'dashboard.skill.leadership': 'Liderazgo / PM',
+
+  // Dashboard project cards
+  'dashboard.project.floricultora': 'Sistema Compras Floricultora',
+  'dashboard.project.floricultoraDesc': 'Automatización completa de compras con Angular 19, Node.js, Express, C#/.NET y Docker. Eliminó la necesidad de un comprador dedicado.',
+  'dashboard.project.credits': 'Sistema Créditos FONDOSBC',
+  'dashboard.project.creditsDesc': 'Lideré equipo de 5 desarrolladores, migración de sistema legacy, gestión crediticia gubernamental completa.',
+  'dashboard.project.sei': 'Sistema Gestión SEI',
+  'dashboard.project.seiDesc': 'Helpdesk con dashboards de métricas, tests unitarios y feature en 100% de APIs, CI/CD con lint automatizado en PRs.',
+
+  // Dashboard reference cards
+  'dashboard.ref.productionTime': 'Tiempo en Producción',
+  'dashboard.ref.productionTimeDesc': 'Línea de tiempo de proyectos en producción con sus stacks tecnológicos',
+  'dashboard.ref.avgResponses': 'Respuestas Promedio',
+  'dashboard.ref.avgResponsesDesc': 'Indicadores clave de rendimiento, calidad y satisfacción',
+
+  // Tiempo Producción - stats
+  'tiempoProduccion.stat.projects': 'Proyectos en Producción',
+  'tiempoProduccion.stat.yearsInProd': 'Años en Producción',
+  'tiempoProduccion.stat.technologies': 'Tecnologías Distintas',
+  'tiempoProduccion.stat.clients': 'Clientes / Entidades',
+
+  // Tiempo Producción - sections
+  'tiempoProduccion.section.timeline': 'Línea de Tiempo',
+  'tiempoProduccion.section.techFreq': 'Tecnologías más Usadas',
+
+  // Tiempo Producción - projects
+  'tiempoProduccion.project.covid': 'Sistema Web Noticias COVID',
+  'tiempoProduccion.project.psicologica': 'App Ayuda Psicológica Universitaria',
+  'tiempoProduccion.project.floricultora': 'Sistema Compras Floricultora',
+  'tiempoProduccion.project.almacenes': 'Sistema Almacenes',
+  'tiempoProduccion.project.creditos': 'Sistema Créditos FONDOSBC',
+  'tiempoProduccion.project.sei': 'Sistema Gestión SEI',
+  'tiempoProduccion.project.estimulos': 'Sistema Estímulos Fiscales SE',
+  'tiempoProduccion.project.landing': 'Landing Page Aire Comprimido',
+
+  // Tiempo Producción - roles
+  'tiempoProduccion.role.intern': 'Practicante',
+  'tiempoProduccion.role.fullstack': 'Fullstack Developer',
+  'tiempoProduccion.role.frontend': 'Frontend + CI/CD',
+  'tiempoProduccion.role.leader': 'Líder Técnico',
+  'tiempoProduccion.role.freelance': 'Freelance',
+
+  // Tiempo Producción - periods
+  'tiempoProduccion.period.6months': '6 meses',
+  'tiempoProduccion.period.1year': '1 año',
+  'tiempoProduccion.period.ongoing': 'En curso',
+
+  // Tiempo Producción - chart
+  'tiempoProduccion.chart.projectsLabel': 'Proyectos',
 } as const satisfies Record<string, string>;

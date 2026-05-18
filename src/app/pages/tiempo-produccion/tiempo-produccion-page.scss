@@ -1,0 +1,77 @@
+// =============================================
+// Timeline Styles
+// =============================================
+
+.timeline {
+  position: relative;
+  padding-left: 1.5rem;
+
+  // Vertical line
+  &::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--bs-border-color);
+  }
+}
+
+.timeline-group {
+  margin-bottom: 0.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.timeline-year-label {
+  position: relative;
+  margin-bottom: 0.75rem;
+  padding-left: 2.5rem;
+
+  .year-badge {
+    display: inline-block;
+    background-color: var(--bs-primary);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.1rem 0.75rem;
+    border-radius: 999px;
+    letter-spacing: 0.5px;
+  }
+}
+
+.timeline-item {
+  padding-left: 1.5rem;
+
+  // Connect each item to the vertical line
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 1rem;
+    height: 2px;
+    background-color: var(--bs-border-color);
+  }
+}
+
+.timeline-dot {
+  border-radius: 50%;
+  background-color: var(--bs-body-bg);
+  border: 2px solid var(--bs-border-color);
+  z-index: 1;
+  flex-shrink: 0;
+  transition: border-color 0.2s ease;
+
+  &.active {
+    border-color: var(--bs-success);
+    box-shadow: 0 0 0 3px rgba(var(--bs-success-rgb), 0.15);
+  }
+}
+
+.timeline-content {
+  min-width: 0;
+}
