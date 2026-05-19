@@ -1,5 +1,11 @@
 <div class="container-fluid p-4">
 
+  <!-- Page Header -->
+  <div class="mb-4">
+    <h1 class="h3 fw-semibold mb-1">{{ t()['sidebar.dashboard'] }}</h1>
+    <p class="text-secondary mb-0">{{ t()['dashboard.pageSubtitle'] }}</p>
+  </div>
+
   <!-- Row 1: Stats Cards -->
   <div class="row g-3 mb-4">
     @for (stat of stats; track stat.labelKey) {

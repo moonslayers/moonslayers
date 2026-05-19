@@ -100,6 +100,12 @@ export const TRANSLATION_KEYS = [
 
   // Tiempo Producción - chart
   'tiempoProduccion.chart.projectsLabel',
+
+  // Dashboard page header
+  'dashboard.pageSubtitle',
+
+  // Tiempo Producción page header
+  'tiempoProduccion.pageSubtitle',
 ] as const;
 
 export type TranslationKey = typeof TRANSLATION_KEYS[number];

@@ -100,4 +100,8 @@ export const en = {
 
   // Tiempo Producción - chart
   'tiempoProduccion.chart.projectsLabel': 'Projects',
+
+  // Page headers
+  'dashboard.pageSubtitle': 'Main dashboard with metrics, skills and featured projects',
+  'tiempoProduccion.pageSubtitle': 'Timeline of production projects with their tech stacks',
 } as const satisfies Record<string, string>;

@@ -100,4 +100,8 @@ export const es = {
 
   // Tiempo Producción - chart
   'tiempoProduccion.chart.projectsLabel': 'Proyectos',
+
+  // Page headers
+  'dashboard.pageSubtitle': 'Panel principal con métricas, habilidades y proyectos destacados',
+  'tiempoProduccion.pageSubtitle': 'Línea de tiempo de proyectos puestos en producción con sus stacks tecnológicos',
 } as const satisfies Record<string, string>;
