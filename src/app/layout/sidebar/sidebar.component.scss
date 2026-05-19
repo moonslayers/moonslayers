@@ -26,7 +26,8 @@
 }
 
 .sidebar-item.active {
-  background-color: rgba(var(--bs-primary-rgb), 0.12);
+  background-color: rgba(var(--bs-primary-rgb), 0.8);
+  color: white !important;
   font-weight: 500;
 }
 
