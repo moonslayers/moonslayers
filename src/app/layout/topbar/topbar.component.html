@@ -23,7 +23,7 @@
         <i class="bi-search fs-5"></i>
       </button>
       @if (searchOpen()) {
-      <div class="dropdown-panel position-absolute end-0 mt-1 bg-body border rounded shadow-sm p-2 search-mobile"
+      <div class="dropdown-panel position-absolute end-0 mt-1 bg-body border rounded shadow p-2 search-mobile"
         style="width: 280px; z-index: 1060;">
         <div class="input-group input-group-sm">
           <span class="input-group-text bg-body-tertiary border-0">
@@ -50,8 +50,7 @@
           [attr.aria-label]="t()['aria.notifications']">
           <i class="bi-bell fs-5"></i>
           @if (unreadCount() > 0) {
-          <span
-            class="position-absolute top-0 mt-1 start-100 translate-middle badge rounded-pill bg-danger small">{{
+          <span class="position-absolute top-0 mt-1 start-100 translate-middle badge rounded-pill bg-danger small">{{
             unreadCount() }}</span>
           }
         </button>
@@ -63,8 +62,7 @@
           </div>
           <div class="list-unstyled mb-0">
             @for (notif of mockNotifications(); track notif.textKey) {
-            <div class="d-flex align-items-start gap-3 px-3 py-2 border-bottom"
-              [class.bg-body-tertiary]="notif.unread">
+            <div class="d-flex align-items-start gap-3 px-3 py-2 border-bottom" [class.bg-body-tertiary]="notif.unread">
               <div class="d-flex align-items-center justify-content-center flex-shrink-0"
                 style="width: 36px; height: 36px;">
                 <i [class]="notif.icon + ' ' + notif.colorClass + ' fs-5'"></i>
@@ -75,7 +73,8 @@
               </div>
               @if (notif.unread) {
               <div class="flex-shrink-0 mt-1">
-                <span class="badge rounded-pill bg-primary d-block" style="width: 8px; height: 8px; padding: 0;">&nbsp;</span>
+                <span class="badge rounded-pill bg-primary d-block"
+                  style="width: 8px; height: 8px; padding: 0;">&nbsp;</span>
               </div>
               }
             </div>
@@ -95,7 +94,7 @@
           <i class="bi-globe2 fs-5"></i>
         </button>
         @if (languageOpen()) {
-        <ul class="dropdown-panel position-absolute end-0 mt-1 bg-body border rounded shadow-sm list-unstyled mb-0 py-1"
+        <ul class="dropdown-panel position-absolute end-0 mt-1 bg-body border rounded shadow list-unstyled mb-0 py-1"
           style="min-width: 80px; z-index: 1060;">
           <li>
             <button class="btn btn-link text-decoration-none text-body d-block w-100 text-start px-3 py-1 small"

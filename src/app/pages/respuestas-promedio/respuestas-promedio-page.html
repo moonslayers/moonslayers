@@ -7,11 +7,12 @@
   </div>
 
   <!-- Hero: Response Time -->
-  <div class="card border-0 shadow-sm mb-4 overflow-hidden">
+  <div class="card border-0 shadow mb-4 overflow-hidden">
     <div class="card-body">
       <div class="row align-items-center g-4">
         <div class="col-md-5 text-center text-md-start">
-          <div class="d-inline-flex align-items-center gap-2 badge bg-primary bg-opacity-10 text-primary fw-normal rounded-pill px-3 py-2 mb-3">
+          <div
+            class="d-inline-flex align-items-center gap-2 badge bg-primary bg-opacity-10 text-primary fw-normal rounded-pill px-3 py-2 mb-3">
             <i class="bi bi-clock-history"></i>
             {{ t()['respuestasPromedio.hero.responseTimeLabel'] }}
           </div>
@@ -31,7 +32,7 @@
   <div class="row g-3 mb-4">
     @for (stat of stats; track stat.labelKey) {
     <div class="col-6 col-lg-3">
-      <div class="card border-0 shadow-sm h-100">
+      <div class="card border-0 shadow h-100">
         <div class="card-body d-flex align-items-center gap-3">
           <div class="d-flex align-items-center justify-content-center rounded-3 {{ stat.bgClass }} bg-opacity-10"
             style="width: 52px; height: 52px;">
@@ -51,7 +52,7 @@
   <!-- Row 2: Charts - Resolution & Distribution -->
   <div class="row g-3 mb-4">
     <div class="col-12 col-lg-6">
-      <div class="card border-0 shadow-sm h-100">
+      <div class="card border-0 shadow h-100">
         <div class="card-body">
           <h6 class="card-title small fw-semibold text-secondary mb-3">
             <i class="bi bi-bar-chart-fill me-2"></i>{{ t()['respuestasPromedio.section.resolution'] }}
@@ -61,7 +62,7 @@
       </div>
     </div>
     <div class="col-12 col-lg-6">
-      <div class="card border-0 shadow-sm h-100">
+      <div class="card border-0 shadow h-100">
         <div class="card-body">
           <h6 class="card-title small fw-semibold text-secondary mb-3">
             <i class="bi bi-pie-chart-fill me-2"></i>{{ t()['respuestasPromedio.section.distribution'] }}
@@ -75,7 +76,7 @@
   <!-- Row 3: Charts - Leadership Radar & Tech Stack -->
   <div class="row g-3">
     <div class="col-12 col-lg-6">
-      <div class="card border-0 shadow-sm h-100">
+      <div class="card border-0 shadow h-100">
         <div class="card-body">
           <h6 class="card-title small fw-semibold text-secondary mb-3">
             <i class="bi bi-diagram-3 me-2"></i>{{ t()['respuestasPromedio.section.leadership'] }}
@@ -92,8 +93,7 @@
                   <span class="fw-semibold">{{ radarScores[i] }}%</span>
                 </div>
                 <div class="progress" style="height: 6px;">
-                  <div class="progress-bar rounded-pill"
-                    [style.width.%]="radarScores[i]"
+                  <div class="progress-bar rounded-pill" [style.width.%]="radarScores[i]"
                     [class.bg-success]="radarScores[i] >= 85"
                     [class.bg-primary]="radarScores[i] >= 75 && radarScores[i] < 85"
                     [class.bg-warning]="radarScores[i] < 75">
@@ -107,7 +107,7 @@
       </div>
     </div>
     <div class="col-12 col-lg-6">
-      <div class="card border-0 shadow-sm h-100">
+      <div class="card border-0 shadow h-100">
         <div class="card-body">
           <h6 class="card-title small fw-semibold text-secondary mb-3">
             <i class="bi bi-stack me-2"></i>{{ t()['respuestasPromedio.section.techStack'] }}
@@ -119,22 +119,26 @@
             <div class="col-md-6">
               <div class="vstack gap-3">
                 <div class="d-flex align-items-center gap-2">
-                  <span class="d-inline-block rounded-circle" style="width: 12px; height: 12px; background: var(--bs-success);"></span>
+                  <span class="d-inline-block rounded-circle"
+                    style="width: 12px; height: 12px; background: var(--bs-success);"></span>
                   <span class="small">{{ t()['respuestasPromedio.tech.frontend'] }}</span>
                   <span class="fw-semibold ms-auto">40%</span>
                 </div>
                 <div class="d-flex align-items-center gap-2">
-                  <span class="d-inline-block rounded-circle" style="width: 12px; height: 12px; background: var(--bs-primary);"></span>
+                  <span class="d-inline-block rounded-circle"
+                    style="width: 12px; height: 12px; background: var(--bs-primary);"></span>
                   <span class="small">{{ t()['respuestasPromedio.tech.backend'] }}</span>
                   <span class="fw-semibold ms-auto">30%</span>
                 </div>
                 <div class="d-flex align-items-center gap-2">
-                  <span class="d-inline-block rounded-circle" style="width: 12px; height: 12px; background: var(--bs-warning);"></span>
+                  <span class="d-inline-block rounded-circle"
+                    style="width: 12px; height: 12px; background: var(--bs-warning);"></span>
                   <span class="small">{{ t()['respuestasPromedio.tech.devops'] }}</span>
                   <span class="fw-semibold ms-auto">20%</span>
                 </div>
                 <div class="d-flex align-items-center gap-2">
-                  <span class="d-inline-block rounded-circle" style="width: 12px; height: 12px; background: var(--bs-info);"></span>
+                  <span class="d-inline-block rounded-circle"
+                    style="width: 12px; height: 12px; background: var(--bs-info);"></span>
                   <span class="small">{{ t()['respuestasPromedio.tech.databases'] }}</span>
                   <span class="fw-semibold ms-auto">10%</span>
                 </div>
