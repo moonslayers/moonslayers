@@ -24,7 +24,7 @@ export class DashboardPage {
     { icon: 'bi-calendar-check', value: '4+', labelKey: 'dashboard.stat.experience', color: 'text-primary', bgClass: 'bg-primary' },
     { icon: 'bi-folder', value: '8', labelKey: 'dashboard.stat.projects', color: 'text-success', bgClass: 'bg-success' },
     { icon: 'bi-code-slash', value: '15+', labelKey: 'dashboard.stat.technologies', color: 'text-info', bgClass: 'bg-info' },
-    { icon: 'bi-award', value: '1', labelKey: 'dashboard.stat.certifications', color: 'text-warning', bgClass: 'bg-warning' },
+    { icon: 'bi-award', value: '5', labelKey: 'dashboard.stat.certifications', color: 'text-warning', bgClass: 'bg-warning' },
   ];
 
   // ============ Reactive Chart Colors from Bootstrap CSS vars ============
@@ -138,5 +138,14 @@ export class DashboardPage {
       color: 'text-success',
       bgClass: 'bg-success-subtle',
     },
+  ];
+
+  // ============ Certifications ============
+  protected readonly certifications = [
+    { icon: 'bi-cpu', title: 'Clasificación de Imágenes con Redes Neuronales', category: 'IA & Data Science' },
+    { icon: 'bi-boxes', title: 'Machine Learning con Python', category: 'IA & Data Science' },
+    { icon: 'bi-people', title: 'Gerencia Directiva para Prevención de Riesgos Psicosociales', category: 'Liderazgo' },
+    { icon: 'bi-shield-check', title: 'FUND NOM-035 — Factores de Riesgo Psicosocial', category: 'Cumplimiento' },
+    { icon: 'bi-graph-up-arrow', title: 'Liderazgo y Gerencia en Tecnología e Ingeniería', category: 'Liderazgo' },
   ];
 }

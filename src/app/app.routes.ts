@@ -4,6 +4,7 @@ import { PlaceholderPage } from './pages/placeholder/placeholder-page';
 import { UiColorTest } from './shared/ui-color-test/ui-color-test';
 import { DashboardPage } from './pages/dashboard/dashboard-page';
 import { TiempoProduccionPage } from './pages/tiempo-produccion/tiempo-produccion-page';
+import { RespuestasPromedioPage } from './pages/respuestas-promedio/respuestas-promedio-page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'ui-test', pathMatch: 'full' },
@@ -14,7 +15,7 @@ export const routes: Routes = [
       { path: 'ui-test', component: UiColorTest },
       { path: 'dashboard', component: DashboardPage },
       { path: 'dashboards/tiempo-produccion', component: TiempoProduccionPage },
-      { path: 'dashboards/respuestas-promedio', component: PlaceholderPage, data: { labelKey: 'sidebar.respuestasPromedio' } },
+      { path: 'dashboards/respuestas-promedio', component: RespuestasPromedioPage },
       { path: 'profile', component: PlaceholderPage, data: { labelKey: 'sidebar.profile' } },
       { path: 'projects', component: PlaceholderPage, data: { labelKey: 'sidebar.proyectos' } },
       { path: 'career', component: PlaceholderPage, data: { labelKey: 'sidebar.career' } },

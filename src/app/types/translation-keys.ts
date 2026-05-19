@@ -103,9 +103,42 @@ export const TRANSLATION_KEYS = [
 
   // Dashboard page header
   'dashboard.pageSubtitle',
+  'dashboard.section.constancias',
 
   // Tiempo Producción page header
   'tiempoProduccion.pageSubtitle',
+
+  // Respuestas Promedio page
+  'respuestasPromedio.pageSubtitle',
+  'respuestasPromedio.hero.responseTime',
+  'respuestasPromedio.hero.responseTimeLabel',
+  'respuestasPromedio.hero.responseTimeDesc',
+  'respuestasPromedio.kpi.storyPoints',
+  'respuestasPromedio.kpi.storyPointsDesc',
+  'respuestasPromedio.kpi.tickets',
+  'respuestasPromedio.kpi.ticketsDesc',
+  'respuestasPromedio.kpi.myTickets',
+  'respuestasPromedio.kpi.myTicketsDesc',
+  'respuestasPromedio.kpi.prReview',
+  'respuestasPromedio.kpi.prReviewDesc',
+  'respuestasPromedio.section.resolution',
+  'respuestasPromedio.section.distribution',
+  'respuestasPromedio.section.leadership',
+  'respuestasPromedio.section.techStack',
+  'respuestasPromedio.chart.resolutionLabel',
+  'respuestasPromedio.chart.myTicketsLabel',
+  'respuestasPromedio.chart.teamTicketsLabel',
+  'respuestasPromedio.chart.reviewedLabel',
+  'respuestasPromedio.chart.notReviewedLabel',
+  'respuestasPromedio.radar.codeQuality',
+  'respuestasPromedio.radar.teamLeadership',
+  'respuestasPromedio.radar.delivery',
+  'respuestasPromedio.radar.architecture',
+  'respuestasPromedio.radar.devops',
+  'respuestasPromedio.tech.frontend',
+  'respuestasPromedio.tech.backend',
+  'respuestasPromedio.tech.devops',
+  'respuestasPromedio.tech.databases',
 ] as const;
 
 export type TranslationKey = typeof TRANSLATION_KEYS[number];

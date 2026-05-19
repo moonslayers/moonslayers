@@ -1,0 +1,12 @@
+.respuestas-promedio-page {
+  // Placeholder for any page-specific styles if needed
+}
+
+.response-trend-chart {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
