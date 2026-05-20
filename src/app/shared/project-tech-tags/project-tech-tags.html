@@ -1,0 +1,10 @@
+<div>
+  @for (group of techGroups(); track group.category) {
+    <small class="d-block text-muted fw-medium mb-1">{{ group.category }}</small>
+    <div class="mb-3">
+      @for (item of group.items; track item) {
+        <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill me-1 mb-1">{{ item }}</span>
+      }
+    </div>
+  }
+</div>

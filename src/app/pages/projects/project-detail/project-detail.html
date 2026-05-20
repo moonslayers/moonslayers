@@ -1,0 +1,168 @@
+<div class="container-fluid">
+  <a [routerLink]="['/projects']" class="btn btn-link text-decoration-none ps-0 mb-3">
+    <i class="bi bi-arrow-left me-1"></i>{{ t()['projects.detail.backToProjects'] }}
+  </a>
+
+  @if (project(); as p) {
+    <div class="row mb-4">
+      <div class="col-12">
+        <div class="d-flex align-items-start gap-3 flex-wrap">
+          <div class="flex-grow-1">
+            <h1 class="mb-1">{{ projectTranslation()?.title }}</h1>
+            @if (projectTranslation()?.subtitle) {
+              <p class="text-secondary fs-5 mb-2">{{ projectTranslation()?.subtitle }}</p>
+            }
+
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              @if (p.role) {
+                <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill">
+                  <i class="bi bi-person-badge me-1"></i>{{ p.role }}
+                </span>
+              }
+              @if (p.period) {
+                <span class="badge bg-info bg-opacity-10 text-info border border-info border-opacity-25 rounded-pill">
+                  <i class="bi bi-calendar me-1"></i>{{ p.period }}
+                </span>
+              }
+              @if (p.client) {
+                <span class="badge bg-warning bg-opacity-10 text-warning border border-warning border-opacity-25 rounded-pill">
+                  <i class="bi bi-building me-1"></i>{{ p.client }}
+                </span>
+              }
+              @if (p.status === 'completed') {
+                <span class="badge bg-success rounded-pill">{{ t()['projects.status.completed'] }}</span>
+              } @else if (p.status === 'in-progress') {
+                <span class="badge bg-warning text-dark rounded-pill">{{ t()['projects.status.inProgress'] }}</span>
+              } @else if (p.status === 'maintenance') {
+                <span class="badge bg-info text-dark rounded-pill">{{ t()['projects.status.maintenance'] }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-12">
+        <p class="lead">{{ hasLongDescription() ? projectTranslation()?.longDescription : projectTranslation()?.description }}</p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-12 col-lg-7">
+        @if (projectTranslation()?.techStack && projectTranslation()?.techStack!.length > 0) {
+          <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body">
+              <h5 class="card-title mb-3">
+                <i class="bi bi-code-slash me-2"></i>{{ t()['projects.detail.techStack'] }}
+              </h5>
+              <app-project-tech-tags [techGroups]="projectTranslation()?.techStack ?? []" />
+            </div>
+          </div>
+        }
+
+        @if (hasFeatures()) {
+          <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body">
+              <h5 class="card-title mb-3">
+                <i class="bi bi-star me-2"></i>{{ t()['projects.detail.features'] }}
+              </h5>
+              <div class="row g-3">
+                @for (feature of projectTranslation()?.features; track feature.title; let i = $index) {
+                  <div class="col-12 col-md-6">
+                    <div class="d-flex gap-2">
+                      @if (p.featureIcons && p.featureIcons[i]) {
+                        <i [class]="'flex-shrink-0 mt-1 ' + p.featureIcons[i]"></i>
+                      } @else {
+                        <i class="bi bi-check-circle-fill text-success flex-shrink-0 mt-1"></i>
+                      }
+                      <div>
+                        <strong>{{ feature.title }}</strong>
+                        <p class="text-secondary small mb-0">{{ feature.description }}</p>
+                      </div>
+                    </div>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="col-12 col-lg-5">
+        @if (hasLinks()) {
+          <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body">
+              <h5 class="card-title mb-3">
+                <i class="bi bi-link-45deg me-2"></i>{{ t()['projects.detail.links'] }}
+              </h5>
+              <div class="d-flex flex-column gap-2">
+                @for (link of p.links; track link.url) {
+                  <a [href]="link.url" target="_blank" rel="noopener noreferrer"
+                     class="btn btn-outline-primary d-flex align-items-center gap-2">
+                    <i [class]="link.icon"></i>
+                    <span>{{ link.label }}</span>
+                    <i class="bi bi-box-arrow-up-right ms-auto"></i>
+                  </a>
+                }
+              </div>
+            </div>
+          </div>
+        }
+
+        <div class="card border-0 shadow-sm mb-4">
+          <div class="card-body">
+            <h5 class="card-title mb-3">
+              <i class="bi bi-info-circle me-2"></i>{{ t()['projects.detail.info'] }}
+            </h5>
+            <dl class="row mb-0">
+              @if (p.role) {
+                <dt class="col-sm-4 text-secondary">{{ t()['projects.detail.role'] }}</dt>
+                <dd class="col-sm-8">{{ p.role }}</dd>
+              }
+              @if (p.period) {
+                <dt class="col-sm-4 text-secondary">{{ t()['projects.detail.period'] }}</dt>
+                <dd class="col-sm-8">{{ p.period }}</dd>
+              }
+              @if (p.client) {
+                <dt class="col-sm-4 text-secondary">{{ t()['projects.detail.client'] }}</dt>
+                <dd class="col-sm-8">{{ p.client }}</dd>
+              }
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    @if (hasImages()) {
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+          <h5 class="card-title mb-3">
+            <i class="bi bi-images me-2"></i>{{ t()['projects.detail.gallery'] }}
+          </h5>
+          <app-project-image-gallery [images]="p.media.images!" />
+        </div>
+      </div>
+    }
+
+    @if (hasPdfs()) {
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-body">
+          <h5 class="card-title mb-3">
+            <i class="bi bi-file-earmark-pdf me-2"></i>{{ t()['projects.detail.resources'] }}
+          </h5>
+          <app-project-pdf-list [pdfs]="p.media.pdfs!" />
+        </div>
+      </div>
+    }
+
+  } @else {
+    <div class="text-center py-5">
+      <i class="bi bi-exclamation-triangle fs-1 text-warning"></i>
+      <h3 class="mt-3">{{ t()['projects.noProjects'] }}</h3>
+      <a [routerLink]="['/projects']" class="btn btn-primary mt-3">
+        <i class="bi bi-arrow-left me-1"></i>{{ t()['projects.detail.backToProjects'] }}
+      </a>
+    </div>
+  }
+</div>

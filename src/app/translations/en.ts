@@ -137,4 +137,33 @@ export const en = {
   'respuestasPromedio.tech.backend': 'Backend',
   'respuestasPromedio.tech.devops': 'DevOps',
   'respuestasPromedio.tech.databases': 'Databases',
+
+  // Projects page
+  'projects.pageTitle': 'Projects',
+  'projects.pageSubtitle': 'Projects I have worked on',
+
+  // Project detail
+  'projects.detail.backToProjects': '← Back to Projects',
+  'projects.detail.techStack': 'Tech Stack',
+  'projects.detail.features': 'Features',
+  'projects.detail.gallery': 'Gallery',
+  'projects.detail.resources': 'Resources',
+  'projects.detail.links': 'Links',
+  'projects.detail.role': 'Role',
+  'projects.detail.period': 'Period',
+  'projects.detail.client': 'Client',
+  'projects.detail.technologies': 'Technologies',
+  'projects.detail.info': 'Information',
+
+  // Project status
+  'projects.status.completed': 'Completed',
+  'projects.status.inProgress': 'In Progress',
+  'projects.status.maintenance': 'Maintenance',
+
+  // No results / filters
+  'projects.noProjects': 'No projects found',
+  'projects.filter.all': 'All',
+
+  // Project card
+  'projects.viewMore': 'View more',
 } as const satisfies Record<string, string>;

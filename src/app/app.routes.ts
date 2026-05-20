@@ -5,6 +5,8 @@ import { UiColorTest } from './shared/ui-color-test/ui-color-test';
 import { DashboardPage } from './pages/dashboard/dashboard-page';
 import { TiempoProduccionPage } from './pages/tiempo-produccion/tiempo-produccion-page';
 import { RespuestasPromedioPage } from './pages/respuestas-promedio/respuestas-promedio-page';
+import { ProjectsPage } from './pages/projects/projects-page';
+import { ProjectDetailPage } from './pages/projects/project-detail/project-detail';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'ui-test', pathMatch: 'full' },
@@ -17,7 +19,8 @@ export const routes: Routes = [
       { path: 'dashboards/tiempo-produccion', component: TiempoProduccionPage },
       { path: 'dashboards/respuestas-promedio', component: RespuestasPromedioPage },
       { path: 'profile', component: PlaceholderPage, data: { labelKey: 'sidebar.profile' } },
-      { path: 'projects', component: PlaceholderPage, data: { labelKey: 'sidebar.proyectos' } },
+      { path: 'projects', component: ProjectsPage },
+      { path: 'projects/:slug', component: ProjectDetailPage },
       { path: 'career', component: PlaceholderPage, data: { labelKey: 'sidebar.career' } },
       { path: 'contact', component: PlaceholderPage, data: { labelKey: 'sidebar.contacto' } },
     ],

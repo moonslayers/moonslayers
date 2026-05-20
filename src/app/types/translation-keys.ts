@@ -139,6 +139,35 @@ export const TRANSLATION_KEYS = [
   'respuestasPromedio.tech.backend',
   'respuestasPromedio.tech.devops',
   'respuestasPromedio.tech.databases',
+
+  // Projects page
+  'projects.pageTitle',
+  'projects.pageSubtitle',
+
+  // Project detail
+  'projects.detail.backToProjects',
+  'projects.detail.techStack',
+  'projects.detail.features',
+  'projects.detail.gallery',
+  'projects.detail.resources',
+  'projects.detail.links',
+  'projects.detail.role',
+  'projects.detail.period',
+  'projects.detail.client',
+  'projects.detail.technologies',
+  'projects.detail.info',
+
+  // Project status
+  'projects.status.completed',
+  'projects.status.inProgress',
+  'projects.status.maintenance',
+
+  // No results / filters
+  'projects.noProjects',
+  'projects.filter.all',
+
+  // Project card
+  'projects.viewMore',
 ] as const;
 
 export type TranslationKey = typeof TRANSLATION_KEYS[number];
