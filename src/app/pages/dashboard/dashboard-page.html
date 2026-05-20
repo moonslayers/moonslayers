@@ -47,8 +47,9 @@
   </div>
 
   <!-- Row 3: Reference to other Dashboards -->
+  @if (filteredRefs().length > 0) {
   <div class="row g-3 mb-4">
-    @for (ref of refDashboards; track ref.route) {
+    @for (ref of filteredRefs(); track ref.route) {
     <div class="col-12 col-md-6">
       <a [routerLink]="ref.route" class="text-decoration-none d-block dashboard-ref-card">
         <div class="card border-0 shadow h-100">
@@ -67,10 +68,12 @@
     </div>
     }
   </div>
+  }
 
   <!-- Row 4: Featured Projects -->
+  @if (filteredProjects().length > 0) {
   <div class="row g-3">
-    @for (project of projects; track project.titleKey) {
+    @for (project of filteredProjects(); track project.titleKey) {
     <div class="col-12 col-md-6 col-lg-4">
       <div class="card border-0 shadow h-100">
         <div class="card-body d-flex flex-column">
@@ -92,13 +95,15 @@
     </div>
     }
   </div>
+  }
 
   <!-- Row 5: Certifications -->
+  @if (filteredCertifications().length > 0) {
   <h5 class="fw-semibold mb-3 mt-4">
     <i class="bi bi-award me-2 text-warning"></i>{{ t()['dashboard.section.constancias'] }}
   </h5>
   <div class="row g-3">
-    @for (cert of certifications; track cert.title) {
+    @for (cert of filteredCertifications(); track cert.title) {
     <div class="col-md-6 col-lg-4">
       <div class="card border-0 shadow h-100">
         <div class="card-body d-flex align-items-center gap-3">
@@ -116,5 +121,6 @@
     </div>
     }
   </div>
+  }
 
 </div>

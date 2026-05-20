@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, inject, computed } from '@angular/core';
 import { ChartComponent } from '../../shared/chart/chart';
+import { SearchService } from '../../core/services/search.service';
 import { ThemeService } from '../../core/services/theme.service';
 import { TranslationService } from '../../core/services/translation.service';
 import type { ChartData, ChartOptions } from 'chart.js';
@@ -26,6 +27,7 @@ interface TimelineProject {
 export class TiempoProduccionPage {
   private readonly translationService = inject(TranslationService);
   private readonly themeService = inject(ThemeService);
+  private readonly searchService = inject(SearchService);
 
   protected readonly t = this.translationService.t;
 
@@ -49,12 +51,24 @@ export class TiempoProduccionPage {
     { year: '2025', icon: 'bi-globe', color: 'text-success', titleKey: 'tiempoProduccion.project.landing', periodKey: 'tiempoProduccion.period.6months', roleKey: 'tiempoProduccion.role.freelance', tech: ['Astro', 'Tailwind CSS'] },
   ];
 
-  // ============ Group projects by year for timeline ============
+  // ============ Group projects by year for timeline (filtered by search) ============
   protected readonly timelineYearGroups = computed(() => {
+    const search = this.searchService.searchTerm().toLowerCase().trim();
+    const t = this.t();
     const groups: { year: string; items: TimelineProject[] }[] = [];
     const seenYears = new Map<string, TimelineProject[]>();
 
     for (const project of this.timelineProjects) {
+      // Apply search filter
+      if (search) {
+        const text = [
+          t[project.titleKey],
+          t[project.roleKey],
+          ...project.tech,
+        ].filter(Boolean).join(' ').toLowerCase();
+        if (!text.includes(search)) continue;
+      }
+
       if (!seenYears.has(project.year)) {
         seenYears.set(project.year, []);
       }

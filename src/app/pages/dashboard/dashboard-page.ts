@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { ChartComponent } from '../../shared/chart/chart';
 import { ThemeService } from '../../core/services/theme.service';
 import { TranslationService } from '../../core/services/translation.service';
+import { SearchService } from '../../core/services/search.service';
 import type { ChartData, ChartOptions } from 'chart.js';
 
 @Component({
@@ -16,6 +17,7 @@ import type { ChartData, ChartOptions } from 'chart.js';
 export class DashboardPage {
   private readonly translationService = inject(TranslationService);
   private readonly themeService = inject(ThemeService);
+  private readonly searchService = inject(SearchService);
 
   protected readonly t = this.translationService.t;
 
@@ -148,4 +150,44 @@ export class DashboardPage {
     { icon: 'bi-shield-check', title: 'FUND NOM-035 — Factores de Riesgo Psicosocial', category: 'Cumplimiento' },
     { icon: 'bi-graph-up-arrow', title: 'Liderazgo y Gerencia en Tecnología e Ingeniería', category: 'Liderazgo' },
   ];
+
+  // ============ Filtered content for search ============
+  protected readonly filteredProjects = computed(() => {
+    const search = this.searchService.searchTerm().toLowerCase().trim();
+    if (!search) return this.projects;
+    const t = this.t();
+    return this.projects.filter(p => {
+      const text = [
+        t[p.titleKey],
+        t[p.descKey],
+        ...p.tech,
+      ].filter(Boolean).join(' ').toLowerCase();
+      return text.includes(search);
+    });
+  });
+
+  protected readonly filteredRefs = computed(() => {
+    const search = this.searchService.searchTerm().toLowerCase().trim();
+    if (!search) return this.refDashboards;
+    const t = this.t();
+    return this.refDashboards.filter(ref => {
+      const text = [
+        t[ref.titleKey],
+        t[ref.descKey],
+      ].filter(Boolean).join(' ').toLowerCase();
+      return text.includes(search);
+    });
+  });
+
+  protected readonly filteredCertifications = computed(() => {
+    const search = this.searchService.searchTerm().toLowerCase().trim();
+    if (!search) return this.certifications;
+    return this.certifications.filter(cert => {
+      const text = [
+        cert.title,
+        cert.category,
+      ].filter(Boolean).join(' ').toLowerCase();
+      return text.includes(search);
+    });
+  });
 }
