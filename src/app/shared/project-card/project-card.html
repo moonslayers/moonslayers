@@ -22,7 +22,7 @@
     @if (flattenedTech().length) {
       <div class="d-flex flex-wrap gap-1 mt-auto pt-2">
         @for (tech of flattenedTech(); track tech) {
-          <span class="badge bg-primary bg-opacity-10 text-primary border border-primary border-opacity-25 rounded-pill small">{{ tech }}</span>
+          <span class="badge bg-{{ getTechColor($index) }} bg-opacity-10 text-{{ getTechColor($index) }} border border-{{ getTechColor($index) }} border-opacity-25 rounded-pill small">{{ tech }}</span>
         }
       </div>
     }

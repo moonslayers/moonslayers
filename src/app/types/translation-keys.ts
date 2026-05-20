@@ -165,6 +165,7 @@ export const TRANSLATION_KEYS = [
   // No results / filters
   'projects.noProjects',
   'projects.filter.all',
+  'projects.filter.noResults',
 
   // Project card
   'projects.viewMore',

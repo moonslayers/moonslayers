@@ -1,10 +1,12 @@
 import { Component, ChangeDetectionStrategy, inject, signal, computed, ViewChildren, ElementRef, QueryList } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SidebarService } from '../../core/services/sidebar.service';
 import { ThemeService } from '../../core/services/theme.service';
 import { TranslationService } from '../../core/services/translation.service';
+import { SearchService } from '../../core/services/search.service';
 import type { Language } from '../../types/translation-keys';
 
 interface Notification {
@@ -18,7 +20,7 @@ interface Notification {
 @Component({
   selector: 'app-topbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, FormsModule],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,6 +31,7 @@ interface Notification {
 export class TopbarComponent {
   protected readonly sidebarService = inject(SidebarService);
   protected readonly themeService = inject(ThemeService);
+  protected readonly searchService = inject(SearchService);
   private readonly translationService = inject(TranslationService);
   private readonly router = inject(Router);
 

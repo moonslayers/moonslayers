@@ -163,6 +163,7 @@ export const es = {
   // No results / filters
   'projects.noProjects': 'No se encontraron proyectos',
   'projects.filter.all': 'Todos',
+  'projects.filter.noResults': 'No proyectos coinciden con tu búsqueda',
 
   // Project card
   'projects.viewMore': 'Ver más',

@@ -24,6 +24,12 @@ export class ProjectCardComponent {
     this.projectTranslation()?.techStack.flatMap(g => g.items).slice(0, 6) ?? []
   );
 
+  private readonly palette = ['primary', 'success', 'info', 'warning', 'danger', 'secondary'];
+
+  protected getTechColor(index: number): string {
+    return this.palette[index % this.palette.length];
+  }
+
   protected readonly statusBadgeClass: Record<ProjectStatus, string> = {
     completed: 'bg-success',
     'in-progress': 'bg-warning text-dark',

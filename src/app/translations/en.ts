@@ -163,6 +163,7 @@ export const en = {
   // No results / filters
   'projects.noProjects': 'No projects found',
   'projects.filter.all': 'All',
+  'projects.filter.noResults': 'No projects match your search',
 
   // Project card
   'projects.viewMore': 'View more',

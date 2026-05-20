@@ -11,7 +11,8 @@
         <i class="bi-search"></i>
       </span>
       <input type="text" class="form-control bg-body-tertiary border-0" [placeholder]="currentPlaceholder()"
-        [attr.aria-label]="t()['aria.search']">
+        [attr.aria-label]="t()['aria.search']"
+        [ngModel]="searchService.searchTerm()" (ngModelChange)="searchService.searchTerm.set($event)">
     </div>
   </div>
 
@@ -30,7 +31,8 @@
             <i class="bi-search"></i>
           </span>
           <input type="text" class="form-control bg-body-tertiary border-0" [placeholder]="currentPlaceholder()"
-            [attr.aria-label]="t()['aria.search']">
+            [attr.aria-label]="t()['aria.search']"
+            [ngModel]="searchService.searchTerm()" (ngModelChange)="searchService.searchTerm.set($event)">
         </div>
       </div>
       }
