@@ -110,7 +110,7 @@ export class DashboardPage {
       icon: 'bi-bank',
       titleKey: 'dashboard.project.credits',
       descKey: 'dashboard.project.creditsDesc',
-      tech: ['Angular 21', 'Laravel 12', 'MySQL', 'GitHub Actions'],
+      tech: ['Angular 21', 'Laravel 12', 'MySQL 8.0', 'AWS', 'Docker'],
       color: 'text-success',
     },
     {
