@@ -169,6 +169,33 @@ export const TRANSLATION_KEYS = [
 
   // Project card
   'projects.viewMore',
+
+  // Profile page - Secciones
+  'profile.hero.contact',
+  'profile.hero.github',
+  'profile.hero.linkedin',
+  'profile.about.title',
+  'profile.experience.title',
+  'profile.education.title',
+  'profile.skills.title',
+  'profile.languages.title',
+  'profile.projects.title',
+  'profile.certifications.title',
+  'profile.contact.title',
+  'profile.pageSubtitle',
+
+  // Profile page - Skill categories
+  'profile.skill.frontend',
+  'profile.skill.backend',
+  'profile.skill.devops',
+  'profile.skill.databases',
+  'profile.skill.architecture',
+  'profile.skill.ai_tools',
+
+  // Profile page - Language levels
+  'profile.language.native',
+  'profile.language.advanced',
+  'profile.language.intermediate',
 ] as const;
 
 export type TranslationKey = typeof TRANSLATION_KEYS[number];

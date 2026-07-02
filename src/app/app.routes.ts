@@ -7,6 +7,7 @@ import { TiempoProduccionPage } from './pages/tiempo-produccion/tiempo-produccio
 import { RespuestasPromedioPage } from './pages/respuestas-promedio/respuestas-promedio-page';
 import { ProjectsPage } from './pages/projects/projects-page';
 import { ProjectDetailPage } from './pages/projects/project-detail/project-detail';
+import { ProfilePage } from './pages/profile/profile-page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'ui-test', pathMatch: 'full' },
@@ -18,7 +19,7 @@ export const routes: Routes = [
       { path: 'dashboard', component: DashboardPage },
       { path: 'dashboards/tiempo-produccion', component: TiempoProduccionPage },
       { path: 'dashboards/respuestas-promedio', component: RespuestasPromedioPage },
-      { path: 'profile', component: PlaceholderPage, data: { labelKey: 'sidebar.profile' } },
+      { path: 'profile', component: ProfilePage, data: { labelKey: 'sidebar.profile' } },
       { path: 'projects', component: ProjectsPage },
       { path: 'projects/:slug', component: ProjectDetailPage },
       { path: 'career', component: PlaceholderPage, data: { labelKey: 'sidebar.career' } },

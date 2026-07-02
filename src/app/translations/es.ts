@@ -167,4 +167,31 @@ export const es = {
 
   // Project card
   'projects.viewMore': 'Ver más',
+
+  // Profile page - Secciones
+  'profile.hero.contact': 'Contactar',
+  'profile.hero.github': 'GitHub',
+  'profile.hero.linkedin': 'LinkedIn',
+  'profile.about.title': 'Sobre mí',
+  'profile.experience.title': 'Experiencia',
+  'profile.education.title': 'Educación',
+  'profile.skills.title': 'Stack Tecnológico',
+  'profile.languages.title': 'Idiomas',
+  'profile.projects.title': 'Proyectos Destacados',
+  'profile.certifications.title': 'Certificaciones',
+  'profile.contact.title': 'Contacto',
+  'profile.pageSubtitle': 'Mi perfil profesional con experiencia, habilidades y proyectos destacados',
+
+  // Profile page - Skill categories
+  'profile.skill.frontend': 'Frontend',
+  'profile.skill.backend': 'Backend',
+  'profile.skill.devops': 'DevOps',
+  'profile.skill.databases': 'Bases de Datos',
+  'profile.skill.architecture': 'Arquitectura',
+  'profile.skill.ai_tools': 'Herramientas IA',
+
+  // Profile page - Language levels
+  'profile.language.native': 'Nativo',
+  'profile.language.advanced': 'Avanzado',
+  'profile.language.intermediate': 'Intermedio',
 } as const satisfies Record<string, string>;

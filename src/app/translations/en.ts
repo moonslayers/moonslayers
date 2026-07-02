@@ -166,5 +166,32 @@ export const en = {
   'projects.filter.noResults': 'No projects match your search',
 
   // Project card
-  'projects.viewMore': 'View more',
+  'projects.viewMore': 'View More',
+
+  // Profile page - Secciones
+  'profile.hero.contact': 'Contact',
+  'profile.hero.github': 'GitHub',
+  'profile.hero.linkedin': 'LinkedIn',
+  'profile.about.title': 'About Me',
+  'profile.experience.title': 'Experience',
+  'profile.education.title': 'Education',
+  'profile.skills.title': 'Tech Stack',
+  'profile.languages.title': 'Languages',
+  'profile.projects.title': 'Featured Projects',
+  'profile.certifications.title': 'Certifications',
+  'profile.contact.title': 'Contact',
+  'profile.pageSubtitle': 'My professional profile with experience, skills and featured projects',
+
+  // Profile page - Skill categories
+  'profile.skill.frontend': 'Frontend',
+  'profile.skill.backend': 'Backend',
+  'profile.skill.devops': 'DevOps',
+  'profile.skill.databases': 'Databases',
+  'profile.skill.architecture': 'Architecture',
+  'profile.skill.ai_tools': 'AI Tools',
+
+  // Profile page - Language levels
+  'profile.language.native': 'Native',
+  'profile.language.advanced': 'Advanced',
+  'profile.language.intermediate': 'Intermediate',
 } as const satisfies Record<string, string>;
