@@ -11,7 +11,7 @@ import { ContactPage } from './pages/contact/contact-page';
 import { CareerPage } from './pages/career/career-page';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'ui-test', pathMatch: 'full' },
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
     path: '',
     component: LayoutComponent,
