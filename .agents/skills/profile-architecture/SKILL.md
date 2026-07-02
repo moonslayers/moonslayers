@@ -5,7 +5,7 @@ description: >
 license: Apache-2.0
 metadata:
   author: moonslayers
-  version: "1.0"
+  version: "1.1"
   scope: [root]
   auto_invoke:
     - "Profile page modifications"
@@ -18,9 +18,10 @@ allowed-tools: Read, Edit, Write, Glob, Grep, Bash
 
 ## When to Load
 - Working on or modifying the profile page (`/profile`)
-- Adding/editing profile data (bilingual content)
+- Creating new portfolio pages that follow the same architecture (contact, career, etc.)
+- Adding/editing bilingual content with the `translations: Record<Language, T>` pattern
 - Changing the profile page layout
-- Understanding how i18n works for profile data
+- Understanding how i18n works for bilingual data
 
 ## Key Files
 
@@ -31,6 +32,7 @@ src/app/types/
 
 src/app/data/
 ├── profile.data.ts                   # PROFILE_DATA with bilingual translations Record
+├── experience.data.ts                # Shared experience data (single source of truth)
 
 src/app/pages/profile/
 ├── profile-page.ts                   # Standalone component with OnPush
@@ -39,6 +41,8 @@ src/app/pages/profile/
 
 src/styles.scss                       # Utility classes: .min-width-0, .icon-40, .icon-44, .text-pre-line
 ```
+
+> Experience data is now defined in `experience.data.ts` and imported by both profile and career. Profile's projects section uses this data.
 
 ## Architecture Pattern
 
@@ -66,6 +70,25 @@ protected readonly profileTranslation = computed(
   () => this.profile.translations[this.translationService.currentLang()]
 );
 ```
+
+### Search Filtering (added July 2026)
+
+Profile page now supports global search via `SearchService`. The component injects `SearchService` and defines computed signals that filter each section:
+
+- `isSearchActive` — true when search term is non-empty
+- `filteredSkills` — filters skill names AND category keys
+- `filteredLanguages` — filters by name and translated level
+- `filteredEducation` — filters by institution, translated degree/description
+- `filteredCertifications` — filters by translated name, issuer, date
+- `filteredProjects` — filters by company, technologies, translated role
+
+Template pattern: each filterable section is wrapped with:
+```html
+@if (!isSearchActive() || filteredSkills().length > 0) {
+  <!-- section card -->
+}
+```
+Hero and About sections remain always visible (never hidden by search).
 
 ### Template Access
 ```html
@@ -97,12 +120,10 @@ Desktop layout (≥lg breakpoint):
 │                       │  (col-lg-4)    │
 ├───────────────────────┴────────────────┤
 │              ABOUT (col-12)            │
-├────────────────────────────────────────┤
-│           EXPERIENCE (col-12)          │
 ├────────────────────┬───────────────────┤
 │   SKILLS (col-7)   │  CERTS (col-5)   │
 ├────────────────────┴───────────────────┤
-│  PROJECTS (col-8)   │ CONTACT (col-4)  │
+│           PROJECTS (col-12)            │
 └────────────────────────────────────────┘
 ```
 
@@ -130,9 +151,18 @@ Preferir clases utilitarias en `styles.scss`:
 .text-pre-line { white-space: pre-line; }
 ```
 
+### 4. Section visibility under search
+When adding a new filterable section, wrap it with:
+```html
+@if (!isSearchActive() || filteredData().length > 0) {
+```
+This ensures sections hidden by search don't show empty cards.
+
 ## Special Notes
 - The profile uses "moonslayers" as the display name (not the real name)
 - No email, phone, or LinkedIn are shown — only GitHub (privacy preference)
 - All section labels use `t()['profile.*']` keys defined in translation system
 - Component uses `ChangeDetectionStrategy.OnPush`
 - No Bootstrap JS (`data-bs-*`) — all interactivity via Angular signals + @if
+- **Contact card was moved to its own page** at `/contact` (see `src/app/pages/contact/`). The data separation pattern (`types → data → page`) is identical to the profile architecture.
+- **Experience card section was moved to the Career page** (`/career`). The Profile page no longer has an experience card section, though the projects section at the bottom still uses experience data from `experience.data.ts`.

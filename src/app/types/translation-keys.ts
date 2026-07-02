@@ -170,12 +170,20 @@ export const TRANSLATION_KEYS = [
   // Project card
   'projects.viewMore',
 
+  // Career page
+  'career.pageTitle',
+  'career.pageSubtitle',
+  'career.stats.yearsExperience',
+  'career.stats.companies',
+  'career.stats.technologies',
+  'career.timeline.title',
+  'career.search.noResults',
+
   // Profile page - Secciones
   'profile.hero.contact',
   'profile.hero.github',
   'profile.hero.linkedin',
   'profile.about.title',
-  'profile.experience.title',
   'profile.education.title',
   'profile.skills.title',
   'profile.languages.title',
@@ -196,6 +204,15 @@ export const TRANSLATION_KEYS = [
   'profile.language.native',
   'profile.language.advanced',
   'profile.language.intermediate',
+
+  // Contact page
+  'contact.pageTitle',
+  'contact.pageSubtitle',
+  'contact.badge.openSource',
+
+  // Topbar branding
+  'topbar.branding.name',
+  'topbar.branding.version',
 ] as const;
 
 export type TranslationKey = typeof TRANSLATION_KEYS[number];

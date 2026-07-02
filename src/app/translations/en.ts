@@ -168,12 +168,20 @@ export const en = {
   // Project card
   'projects.viewMore': 'View More',
 
+  // Career page
+  'career.pageTitle': 'Career',
+  'career.pageSubtitle': 'My professional journey — experience, companies and technologies',
+  'career.stats.yearsExperience': 'Years of Experience',
+  'career.stats.companies': 'Companies',
+  'career.stats.technologies': 'Technologies',
+  'career.timeline.title': 'Timeline',
+  'career.search.noResults': 'No experiences match your search',
+
   // Profile page - Secciones
   'profile.hero.contact': 'Contact',
   'profile.hero.github': 'GitHub',
   'profile.hero.linkedin': 'LinkedIn',
   'profile.about.title': 'About Me',
-  'profile.experience.title': 'Experience',
   'profile.education.title': 'Education',
   'profile.skills.title': 'Tech Stack',
   'profile.languages.title': 'Languages',
@@ -194,4 +202,13 @@ export const en = {
   'profile.language.native': 'Native',
   'profile.language.advanced': 'Advanced',
   'profile.language.intermediate': 'Intermediate',
+
+  // Contact page
+  'contact.pageTitle': 'Contact',
+  'contact.pageSubtitle': 'Have an idea, question, or collaboration proposal?',
+  'contact.badge.openSource': 'Open Source',
+
+  // Topbar branding
+  'topbar.branding.name': 'Moonslayers',
+  'topbar.branding.version': 'v0.5.8',
 } as const satisfies Record<string, string>;

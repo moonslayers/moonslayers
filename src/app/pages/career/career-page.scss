@@ -1,0 +1,41 @@
+.timeline {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--bs-primary);
+    opacity: 0.2;
+    transform: translateX(-50%);
+  }
+}
+
+.timeline-entry {
+  position: relative;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bs-primary);
+  border: 3px solid var(--bs-body-bg);
+  z-index: 2;
+}
+
+@media (max-width: 767.98px) {
+  .timeline::before {
+    display: none;
+  }
+  .timeline-dot {
+    display: none;
+  }
+}

@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
-import { PlaceholderPage } from './pages/placeholder/placeholder-page';
 import { UiColorTest } from './shared/ui-color-test/ui-color-test';
 import { DashboardPage } from './pages/dashboard/dashboard-page';
 import { TiempoProduccionPage } from './pages/tiempo-produccion/tiempo-produccion-page';
@@ -8,6 +7,8 @@ import { RespuestasPromedioPage } from './pages/respuestas-promedio/respuestas-p
 import { ProjectsPage } from './pages/projects/projects-page';
 import { ProjectDetailPage } from './pages/projects/project-detail/project-detail';
 import { ProfilePage } from './pages/profile/profile-page';
+import { ContactPage } from './pages/contact/contact-page';
+import { CareerPage } from './pages/career/career-page';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'ui-test', pathMatch: 'full' },
@@ -22,8 +23,8 @@ export const routes: Routes = [
       { path: 'profile', component: ProfilePage, data: { labelKey: 'sidebar.profile' } },
       { path: 'projects', component: ProjectsPage },
       { path: 'projects/:slug', component: ProjectDetailPage },
-      { path: 'career', component: PlaceholderPage, data: { labelKey: 'sidebar.career' } },
-      { path: 'contact', component: PlaceholderPage, data: { labelKey: 'sidebar.contacto' } },
+      { path: 'career', component: CareerPage, data: { labelKey: 'sidebar.career' } },
+      { path: 'contact', component: ContactPage, data: { labelKey: 'sidebar.contacto' } },
     ],
   },
 ];
